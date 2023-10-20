@@ -1440,7 +1440,7 @@ function unknownPrompt(input) {
 async function viewCredits() {
   console.clear();
   console.log(`
-  _____________DORKINGTON Ver. 2____________
+  _____________DORKINGTON Ver. 3____________
 
   John A. Isabella III.........Game Coder / Story Writer
   
