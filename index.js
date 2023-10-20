@@ -1393,7 +1393,7 @@ function helpMenu() {
 // Function to start the game again after you complete it
 async function playAgain() {
   let restart = await ask(
-    `\nWould you like to Play Again?\nPlay (P) or Exit (E)?\nView Credits (C)\n>_ `
+    `\n1Would you like to Play Again?\nPlay (P) or Exit (E)?\nView Credits (C)\n>_ `
   );
   restart = capitalizeFirstLetter(restart);
   if (restart === ("P" || "Play")) {
