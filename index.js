@@ -1,5 +1,5 @@
 // Welcome to Dorkington - A Text Based Adventure
-// Version 2.0
+// Version 3.0
 // John Isabella III
 
 const readline = require("readline");
@@ -1374,8 +1374,11 @@ function capitalizePlayerInput(myString) {
 
 //Color Changing Text so some Words Pop out easier
 function colorChangeWords(string, highlightedWords) {
-  let white = "\033[0;39m";
-  let yellow = "\033[0;33m";
+  /* The Old Way of changing the word color is commented out */
+  //let white = "\033[0;39m";
+  //let yellow = "\033[0;33m";
+  let white = "\x1b[0;39m";
+  let yellow = "\x1b[0;33m";
   highlightedWords.forEach((word) => {
     string = string.replaceAll(word, yellow + word + white);
   });
@@ -1393,7 +1396,7 @@ function helpMenu() {
 // Function to start the game again after you complete it
 async function playAgain() {
   let restart = await ask(
-    `\n1Would you like to Play Again?\nPlay (P) or Exit (E)?\nView Credits (C)\n>_ `
+    `\nWould you like to Play Again?\nPlay (P) or Exit (E)?\nView Credits (C)\n>_ `
   );
   restart = capitalizeFirstLetter(restart);
   if (restart === ("P" || "Play")) {
@@ -1404,10 +1407,10 @@ async function playAgain() {
     quitGame();
   } else if (restart === "C" || restart === "Credits") {
     viewCredits();
-  } else {
+  } /* else {
     unknownPrompt(restart);
     playAgain();
-  }
+  } */
 }
 
 // Fucntion that handles Quiting the game.
