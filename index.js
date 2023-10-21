@@ -779,7 +779,23 @@ let interactCommodity = {
   "Death's Scythe": deathsScythe,
 };
 
+if(hero === default_hero){ //! TEST
+  console.log("Heroes Match 1");
+}else{
+  console.log("Heroes don't Match 1");
+}
+console.log("HERO 1", hero);
+console.log("DEFAULT HERO 1", default_hero);
+
 setDefaults(); //Sets all the Default Values
+
+if(hero === default_hero){ //! TEST
+  console.log("Heroes Match 2");
+}else{
+  console.log("Heroes don't Match 2");
+}
+console.log("HERO 2", hero);
+console.log("DEFAULT HERO 2", default_hero);
 
 // A list of words that I want to have in Yellow Text
 let highlightedWords = [
@@ -863,7 +879,6 @@ let highlightedWords = [
   `Demonic Spirit`,
 ];
 
-console.log(damagedLute);
 titleScreen(); // Title Screen & Art
 
 //! Function List
