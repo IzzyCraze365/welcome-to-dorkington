@@ -779,24 +779,6 @@ let interactCommodity = {
   "Death's Scythe": deathsScythe,
 };
 
-if(hero === default_hero){ //! TEST
-  console.log("Heroes Match 1");
-}else{
-  console.log("Heroes don't Match 1");
-}
-console.log("HERO 1", hero);
-console.log("DEFAULT HERO 1", default_hero);
-
-setDefaults(); //Sets all the Default Values
-
-if(hero === default_hero){ //! TEST
-  console.log("Heroes Match 2");
-}else{
-  console.log("Heroes don't Match 2");
-}
-console.log("HERO 2", hero);
-console.log("DEFAULT HERO 2", default_hero);
-
 // A list of words that I want to have in Yellow Text
 let highlightedWords = [
   secretName,
@@ -878,13 +860,39 @@ let highlightedWords = [
   `Demonic Voice`,
   `Demonic Spirit`,
 ];
+//! This entire section is a TEST
+if(hero === default_hero){ //! TEST
+  console.log("Heroes Match 1");
+}else{
+  console.log("Heroes don't Match 1");
+}
+console.log("HERO 1", hero);
+console.log("DEFAULT HERO 1", default_hero);
+console.log("Town Triangle Default 1", default_townTriangle);
+console.log("Town Triangle 1", townTriangle);
+
+setDefaults(); //Sets all the Default Values
+
+if(hero === default_hero){ //! TEST
+  console.log("Heroes Match 2");
+}else{
+  console.log("Heroes don't Match 2");
+}
+console.log("HERO 2", hero);
+console.log("DEFAULT HERO 2", default_hero);
+console.log("Town Triangle Default 1", default_townTriangle);
+console.log("Town Triangle 1", townTriangle);
+
 
 titleScreen(); // Title Screen & Art
 
 //! Function List
 // This is the function that Plays the Game
 async function start() {
+  console.log("currentLocation",locations[currentLocation]); //! TEST
+  console.log("currentLocation",locations[townTriangle]); //! TEST
   setDefaults();
+  console.log("currentLocation",locations[currentLocation]); //! TEST
   heroName = await introduction(); //The player will have to name themselves;
   colorChangeWords(
     `\n${heroName}, you find yourself at the Beginning of a Grand Adventure!\nAnd it all starts right here in this quaint little hamlet of Dorkington.\nIt is probably a good idea to "Look" around.\n(type "Help" to see a list of available actions.)`,
@@ -896,6 +904,7 @@ async function start() {
       `\n${heroName} is currently in the ${currentLocation}.`,
       highlightedWords
     );
+    console.log("currentLocation",locations[currentLocation]); //! TEST
     userInput = await heroAction(heroName);
   }
 }
@@ -1064,7 +1073,7 @@ async function introduction() {
   const welcomeMessage = `Yes (y) or No (n)\n>_ `;
   let answer = await ask(welcomeMessage);
   answer = capitalizePlayerInput(answer); // Normal Mode or super-easy don't have to do anything mode.
-  console.clear();
+  //console.clear(); //! This empties the console. TODO Add me back
   if (answer === "Yes" || answer === "Y") {
     colorChangeWords(
       `\nA Simple Villager, whom bares an uncanny resemblance to you apporaches.\n    "Greetings stranger!\n     It is not often a new adventurer enters our peaceful village of Dorkington.`,
@@ -1072,7 +1081,7 @@ async function introduction() {
     );
     let heroName = await ask(`     What is your name, adventurer?"\n>_ `); // Player chooses their Hero Name for the story
     highlightedWords.push(heroName);
-    console.clear();
+    //console.clear(); //! This empties the console.TODO Add me back
     colorChangeWords(
       `\nSimple Villager\n    "I see, your name is ${heroName},\n     Obviously, you were named after '${heroName} the Mighty' the Warrior of Legend\n     As I live and breathe, we are most fortunate for your arrival.\n\n     Recently, a missionary of rightous nuns was dispatched to aid our small hamlet.\n     However, as they were crossing a bridge over a ravine they were attacked by a horde of goblins.\n     The goblins cut the ropes of the bridge and the cart of nuns fell hundreds of feet onto the sharp rocks below.\n\n     Your assistance is needed posthaste, ${heroName}!\n     Only you can raise enough Gold to help us rebuild that broken bridge."\n`,
       highlightedWords
@@ -1131,6 +1140,7 @@ function nameChecker(alternateName) {
   //Will need a new key in my classes for all locations.
   //How can it check those
   console.log("Inside Name Checker",alternateName); //! TEST
+  console.log("locations",locations); //! TEST
   let actualLocationName = Object.keys(locations).find((i) =>
     locations[i].altNames.includes(alternateName)
   );
