@@ -880,8 +880,8 @@ if(hero === default_hero){ //! TEST
 }
 console.log("HERO 2", hero);
 console.log("DEFAULT HERO 2", default_hero);
-console.log("Town Triangle Default 1", default_townTriangle);
-console.log("Town Triangle 1", townTriangle);
+console.log("Town Triangle Default 2", default_townTriangle);
+console.log("Town Triangle 2", townTriangle);
 
 
 titleScreen(); // Title Screen & Art
@@ -889,10 +889,13 @@ titleScreen(); // Title Screen & Art
 //! Function List
 // This is the function that Plays the Game
 async function start() {
+  console.log("Town Triangle 3", townTriangle);
   console.log("currentLocation",locations[currentLocation]); //! TEST
   console.log("currentLocation",locations[townTriangle]); //! TEST
   setDefaults();
   console.log("currentLocation",locations[currentLocation]); //! TEST
+  console.log("Town Triangle 4", townTriangle);
+  console.log("Default TT",locations[default_townTriangle]); //! TEST
   heroName = await introduction(); //The player will have to name themselves;
   colorChangeWords(
     `\n${heroName}, you find yourself at the Beginning of a Grand Adventure!\nAnd it all starts right here in this quaint little hamlet of Dorkington.\nIt is probably a good idea to "Look" around.\n(type "Help" to see a list of available actions.)`,
