@@ -894,7 +894,10 @@ async function start() {
   console.log("currentLocation",locations[townTriangle]); //! TEST
   setDefaults();
   console.log("currentLocation",locations[currentLocation]); //! TEST
-  console.log("Town Triangle 4", townTriangle);
+if(townTriangle === default_townTriangle){//! TEST
+  console.log("TT Match");//! TEST
+}else {console.log("TT Does NOT Match");}//! TEST
+  console.log("Town Triangle 4", townTriangle);//! TEST
   console.log("Default TT",locations[default_townTriangle]); //! TEST
   heroName = await introduction(); //The player will have to name themselves;
   colorChangeWords(
