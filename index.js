@@ -869,6 +869,7 @@ titleScreen(); // Title Screen & Art
 // This is the function that Plays the Game
 async function start() {
   setDefaults();
+  setDefaultsList();
   heroName = await introduction(); //The player will have to name themselves;
   colorChangeWords(
     `\n${heroName}, you find yourself at the Beginning of a Grand Adventure!\nAnd it all starts right here in this quaint little hamlet of Dorkington.\nIt is probably a good idea to "Look" around.\n(type "Help" to see a list of available actions.)`,
@@ -1446,7 +1447,7 @@ async function playAgain() {
   if (restart === ("P" || "Play")) {
     start(); // Runs the game from the Introduction //! Currently does NOT reset the Class values
     //console.log(`Please type "node index" in the terminal to Play Again.`);
-    quitGame();
+    //quitGame();
   } else if (restart === "E" || restart === "Exit") {
     quitGame();
   } else if (restart === "C" || restart === "Credits") {
@@ -1655,3 +1656,52 @@ pointlessRock = default_pointlessRock
 dragonsTreasure = default_dragonsTreasure
 deathsScythe = default_deathsScythe
 }
+
+// This resets the Constructors
+function setDefaultsList() {
+locations = {
+  "Town Triangle": townTriangle,
+  "Idiot's Inspiring Inn": idiotsInspiringInn,
+  "Upstairs Room": upstairsRoom,
+  "Forlorn Forest Of Fatality": forlornForestOfFatality,
+  "Deep Woods Of Certain Doom": deepWoodsOfCertainDoom,
+  "Hag's Horrid Hovel": hagsHorridHovel,
+  "Dragon's Keep": dragonsKeep,
+  Underworld: underworld,
+};
+
+//All the Person(s) you can interact with
+interactPeople = {
+  "Retired Adventurer": retiredAdventurer,
+  "Simple Villager": simpleVillager,
+  Innkeeper: innkeeper,
+  "Obnoxious Patron": obnoxiousPatron,
+  "Musician With A Broken Arm": musicianWithABrokenArm,
+  "Sleeping Child": sleepingChild,
+  "Exhausted Parents": exhaustedParents,
+  Dragon: dragon,
+  "Grim Reaper": grimReaper,
+  "Crooked Sign": crookedSign,
+  Letterbox: letterbox,
+  "Mounds Of Gold": moundsOfGold,
+  "Heaps Of Silver": heapsOfSilver,
+  "Pile Of Bones": pileOfBones,
+};
+
+//All the Items (Commodity) you can interact with
+interactCommodity = {
+  Sword: sword,
+  Bucket: bucket,
+  "Premium Horse Manure": premiumHorseManure,
+  "Warm Meal": warmMeal,
+  "Bag Of Jewels": BagOfJewels,
+  "Town Map": townMap,
+  "Warm Apple Pie": warmApplePie,
+  "Damaged Lute": damagedLute,
+  "Pointless Rock": pointlessRock,
+  "Dragon's Treasure": dragonsTreasure,
+  "Death's Scythe": deathsScythe,
+};
+}
+
+// TODO objects are staying in previous locations and not resetting after a new game
