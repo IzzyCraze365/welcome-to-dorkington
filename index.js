@@ -1646,6 +1646,7 @@ function setDefaults() {
   heroName = "";
   userInput = "";
   //! newObject = JSON.parse(JSON.stringify(default_object)); is what clones the objects so the defaults are not manipulated
+  // TODO https://www.freecodecamp.org/news/clone-an-object-in-javascript/
   // The following resets the default Characters
   hero = { ...default_hero };
   retiredAdventurer = default_retiredAdventurer;
