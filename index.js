@@ -868,8 +868,8 @@ titleScreen(); // Title Screen & Art
 //! Function List
 // This is the function that Plays the Game
 async function start() {
-  setDefaults();
-  setDefaultsList();
+  //setDefaults();
+  //setDefaultsList(); //TODO Fix this
   heroName = await introduction(); //The player will have to name themselves;
   colorChangeWords(
     `\n${heroName}, you find yourself at the Beginning of a Grand Adventure!\nAnd it all starts right here in this quaint little hamlet of Dorkington.\nIt is probably a good idea to "Look" around.\n(type "Help" to see a list of available actions.)`,
@@ -925,6 +925,10 @@ async function heroAction(heroName) {
         highlightedWords
       );
     }
+    console.log("HERO 5", hero); //! TEST
+    console.log("DEFAULT HERO 5", default_hero);
+    console.log("Town Triangle Default 5", default_townTriangle);
+    console.log("Town Triangle 5", townTriangle);
   } else if (action === "Take" || action === "T") {
     // Adds item to Backpack, Removes item from Current Room
     let takeItem = await ask(`\nWhat would you like to take?\n>_ `);
@@ -1445,6 +1449,29 @@ async function playAgain() {
   );
   restart = capitalizeFirstLetter(restart);
   if (restart === ("P" || "Play")) {
+  //! This entire section is a TEST
+  if(hero === default_hero){ //! TEST
+    console.log("Heroes Match 1");
+  }else{
+    console.log("Heroes don't Match 1");
+  }
+  console.log("HERO 1", hero);
+  console.log("DEFAULT HERO 1", default_hero);
+  console.log("Town Triangle Default 1", default_townTriangle);
+  console.log("Town Triangle 1", townTriangle);
+  
+  setDefaults(); //Sets all the Default Values
+  setDefaultsList(); //TODO Fix this
+  
+  if(hero === default_hero){ //! TEST
+    console.log("Heroes Match 2");
+  }else{
+    console.log("Heroes don't Match 2");
+  }
+  console.log("HERO 2", hero);
+  console.log("DEFAULT HERO 2", default_hero);
+  console.log("Town Triangle Default 2", default_townTriangle);
+  console.log("Town Triangle 2", townTriangle);
     start(); // Runs the game from the Introduction //! Currently does NOT reset the Class values
     //console.log(`Please type "node index" in the terminal to Play Again.`);
     //quitGame();
@@ -1618,11 +1645,12 @@ function setDefaults() {
   currentLocation = "Town Triangle"; // Start back at Square 1
   heroName = "";
   userInput = "";
+  //! newObject = JSON.parse(JSON.stringify(default_object)); is what clones the objects so the defaults are not manipulated
   // The following resets the default Characters
-  hero = default_hero;
+  hero = { ...default_hero };
   retiredAdventurer = default_retiredAdventurer;
   simpleVillager = default_simpleVillager;
-  innkeeper = default_innkeeper;
+  innkeeper = JSON.parse(JSON.stringify(default_innkeeper));//! This doesn't work because it calls a function
   obnoxiousPatron = default_obnoxiousPatron;
   musicianWithABrokenArm = default_musicianWithABrokenArm;
   sleepingChild = default_sleepingChild;
@@ -1635,7 +1663,8 @@ function setDefaults() {
   heapsOfSilver = default_heapsOfSilver;
   pileOfBones = default_pileOfBones;
   // The following resets the default Locations
-  townTriangle = default_townTriangle;
+  townTriangle = Object.assign({}, default_townTriangle);
+  townTriangle = JSON.parse(JSON.stringify(default_townTriangle));
   idiotsInspiringInn = default_idiotsInspiringInn;
   upstairsRoom = default_upstairsRoom;
   forlornForestOfFatality = default_forlornForestOfFatality;
@@ -1658,7 +1687,7 @@ deathsScythe = default_deathsScythe
 }
 
 // This resets the Constructors
-function setDefaultsList() {
+function setDefaultsList() { //TODO Fix this
 locations = {
   "Town Triangle": townTriangle,
   "Idiot's Inspiring Inn": idiotsInspiringInn,
