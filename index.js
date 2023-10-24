@@ -272,18 +272,7 @@ let currentLocation = "Town Triangle"; // This updates as the player moves
 let heroName = ""; // Currently their is no input
 let userInput = ""; // Currently their is no input
 
-// See functions "locationMove" & "locationUpdate" to see how you move
-//The following are all the locations the player can travel to
-let locations = {
-  "Town Triangle": townTriangle,
-  "Idiot's Inspiring Inn": idiotsInspiringInn,
-  "Upstairs Room": upstairsRoom,
-  "Forlorn Forest Of Fatality": forlornForestOfFatality,
-  "Deep Woods Of Certain Doom": deepWoodsOfCertainDoom,
-  "Hag's Horrid Hovel": hagsHorridHovel,
-  "Dragon's Keep": dragonsKeep,
-  Underworld: underworld,
-};
+
 
 // List of Interactable Persons (People b/c Grammar)
 // Complicated Person, see "retiredAdventurerInteraction" function
@@ -577,24 +566,6 @@ const default_pileOfBones = new Person({
   status: "Normal",
 });
 
-//All the Person(s) you can interact with
-let interactPeople = {
-  "Retired Adventurer": retiredAdventurer,
-  "Simple Villager": simpleVillager,
-  Innkeeper: innkeeper,
-  "Obnoxious Patron": obnoxiousPatron,
-  "Musician With A Broken Arm": musicianWithABrokenArm,
-  "Sleeping Child": sleepingChild,
-  "Exhausted Parents": exhaustedParents,
-  Dragon: dragon,
-  "Grim Reaper": grimReaper,
-  "Crooked Sign": crookedSign,
-  Letterbox: letterbox,
-  "Mounds Of Gold": moundsOfGold,
-  "Heaps Of Silver": heapsOfSilver,
-  "Pile Of Bones": pileOfBones,
-};
-
 // List of Interactable Items
 let sword = new Commodity({});
 const default_sword = new Commodity({
@@ -764,6 +735,61 @@ const default_deathsScythe = new Commodity({
   followUp: () => {},
 });
 
+//! This entire section is a TEST
+if(hero === default_hero){ //! TEST
+  console.log("Heroes Match 1");
+}else{
+  console.log("Heroes don't Match 1");
+}
+console.log("HERO 1", hero);
+console.log("DEFAULT HERO 1", default_hero);
+console.log("Town Triangle Default 1", default_townTriangle);
+console.log("Town Triangle 1", townTriangle);
+
+setDefaults(); //Sets all the Default Values
+
+if(hero === default_hero){ //! TEST
+  console.log("Heroes Match 2");
+}else{
+  console.log("Heroes don't Match 2");
+}
+console.log("HERO 2", hero);
+console.log("DEFAULT HERO 2", default_hero);
+console.log("Town Triangle Default 2", default_townTriangle);
+console.log("Town Triangle 2", townTriangle);
+
+
+// See functions "locationMove" & "locationUpdate" to see how you move
+//The following are all the locations the player can travel to
+let locations = {
+  "Town Triangle": townTriangle,
+  "Idiot's Inspiring Inn": idiotsInspiringInn,
+  "Upstairs Room": upstairsRoom,
+  "Forlorn Forest Of Fatality": forlornForestOfFatality,
+  "Deep Woods Of Certain Doom": deepWoodsOfCertainDoom,
+  "Hag's Horrid Hovel": hagsHorridHovel,
+  "Dragon's Keep": dragonsKeep,
+  Underworld: underworld,
+};
+
+//All the Person(s) you can interact with
+let interactPeople = {
+  "Retired Adventurer": retiredAdventurer,
+  "Simple Villager": simpleVillager,
+  Innkeeper: innkeeper,
+  "Obnoxious Patron": obnoxiousPatron,
+  "Musician With A Broken Arm": musicianWithABrokenArm,
+  "Sleeping Child": sleepingChild,
+  "Exhausted Parents": exhaustedParents,
+  Dragon: dragon,
+  "Grim Reaper": grimReaper,
+  "Crooked Sign": crookedSign,
+  Letterbox: letterbox,
+  "Mounds Of Gold": moundsOfGold,
+  "Heaps Of Silver": heapsOfSilver,
+  "Pile Of Bones": pileOfBones,
+};
+
 //All the Items (Commodity) you can interact with
 let interactCommodity = {
   Sword: sword,
@@ -860,7 +886,7 @@ let highlightedWords = [
   `Demonic Voice`,
   `Demonic Spirit`,
 ];
-//! This entire section is a TEST
+/* //! This entire section is a TEST
 if(hero === default_hero){ //! TEST
   console.log("Heroes Match 1");
 }else{
@@ -881,7 +907,7 @@ if(hero === default_hero){ //! TEST
 console.log("HERO 2", hero);
 console.log("DEFAULT HERO 2", default_hero);
 console.log("Town Triangle Default 2", default_townTriangle);
-console.log("Town Triangle 2", townTriangle);
+console.log("Town Triangle 2", townTriangle); */
 
 
 titleScreen(); // Title Screen & Art
