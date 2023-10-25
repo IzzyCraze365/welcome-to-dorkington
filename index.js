@@ -1648,45 +1648,45 @@ function setDefaults() {
   //! newObject = JSON.parse(JSON.stringify(default_object)); is what clones the objects so the defaults are not manipulated
   // TODO https://www.freecodecamp.org/news/clone-an-object-in-javascript/
   // The following resets the default Characters
-  hero = Object.create(default_hero);
-  retiredAdventurer = Object.create(default_retiredAdventurer);
-  simpleVillager = Object.create(default_simpleVillager);
+  hero = {...default_hero};
+  retiredAdventurer = {...default_retiredAdventurer};
+  simpleVillager = {...default_simpleVillager};
   //innkeeper = JSON.parse(JSON.stringify(default_innkeeper));//! This doesn't work because it calls a function
-  innkeeper = Object.create(default_innkeeper);//! This doesn't work because it calls a function
+  innkeeper = {...default_innkeeper};//! This doesn't work because it calls a function
   //innkeeper = {...default_innkeeper};//! This doesn't work because it calls a function
-  obnoxiousPatron = Object.create(default_obnoxiousPatron);
-  musicianWithABrokenArm = Object.create(default_musicianWithABrokenArm);
-  sleepingChild = Object.create(default_sleepingChild);
-  exhaustedParents = Object.create(default_exhaustedParents);
-  dragon = Object.create(default_dragon);
-  grimReaper = Object.create(default_grimReaper);
-  crookedSign = Object.create(default_crookedSign);
-  letterbox = Object.create(default_letterbox);
-  moundsOfGold = Object.create(default_moundsOfGold);
-  heapsOfSilver = Object.create(default_heapsOfSilver);
-  pileOfBones = Object.create(default_pileOfBones);
+  obnoxiousPatron = {...default_obnoxiousPatron};
+  musicianWithABrokenArm = {...default_musicianWithABrokenArm};
+  sleepingChild = {...default_sleepingChild};
+  exhaustedParents = {...default_exhaustedParents};
+  dragon = {...default_dragon};
+  grimReaper = {...default_grimReaper};
+  crookedSign = {...default_crookedSign};
+  letterbox = {...default_letterbox};
+  moundsOfGold = {...default_moundsOfGold};
+  heapsOfSilver = {...default_heapsOfSilver};
+  pileOfBones = {...default_pileOfBones};
   // The following resets the default Locations
-  townTriangle = Object.create(default_townTriangle);
-  //townTriangle = JSON.parse(JSON.stringify(default_townTriangle));
-  idiotsInspiringInn = Object.create(default_idiotsInspiringInn);
-  upstairsRoom = Object.create(default_upstairsRoom);
-  forlornForestOfFatality = Object.create(default_forlornForestOfFatality);
-  deepWoodsOfCertainDoom = Object.create(default_deepWoodsOfCertainDoom);
-  hagsHorridHovel = Object.create(default_hagsHorridHovel);
-  dragonsKeep = Object.create(default_dragonsKeep);
-  underworld = Object.create(default_underworld);
+  townTriangle = {...default_townTriangle};
+  //townTriangle = JSON.parse(JSON.stringify(default_townTriangle)};
+  idiotsInspiringInn = {...default_idiotsInspiringInn};
+  upstairsRoom = {...default_upstairsRoom};
+  forlornForestOfFatality = {...default_forlornForestOfFatality};
+  deepWoodsOfCertainDoom = {...default_deepWoodsOfCertainDoom};
+  hagsHorridHovel = {...default_hagsHorridHovel};
+  dragonsKeep = {...default_dragonsKeep};
+  underworld = {...default_underworld};
 // The following resets the default Commodity List
-sword = Object.create(default_sword);
-bucket = Object.create(default_bucket);
-premiumHorseManure = Object.create(default_premiumHorseManure);
-warmMeal = Object.create(default_warmMeal);
-BagOfJewels = Object.create(default_BagOfJewels);
-townMap = Object.create(default_townMap);
-warmApplePie = Object.create(default_warmApplePie);
-damagedLute = Object.create(default_damagedLute);
-pointlessRock = Object.create(default_pointlessRock);
-dragonsTreasure = Object.create(default_dragonsTreasure);
-deathsScythe = Object.create(default_deathsScythe);
+sword = {...default_sword};
+bucket = {...default_bucket};
+premiumHorseManure = {...default_premiumHorseManure};
+warmMeal = {...default_warmMeal};
+BagOfJewels = {...default_BagOfJewels};
+townMap = {...default_townMap};
+warmApplePie = {...default_warmApplePie};
+damagedLute = {...default_damagedLute};
+pointlessRock = {...default_pointlessRock};
+dragonsTreasure = {...default_dragonsTreasure};
+deathsScythe = {...default_deathsScythe};
 }
 
 // This resets the Constructors
