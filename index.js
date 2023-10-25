@@ -270,8 +270,6 @@ let currentLocation = "Town Triangle"; // This updates as the player moves
 let heroName = ""; // Currently their is no input
 let userInput = ""; // Currently their is no input
 
-
-
 // List of Interactable Persons (People b/c Grammar)
 // Complicated Person, see "retiredAdventurerInteraction" function
 let retiredAdventurer = new Person({});
@@ -368,7 +366,7 @@ const default_musicianWithABrokenArm = new Person({
 });
 
 // Complicated Person, see "sleepingChildInteraction" function
-let sleepingChild = new Person({})
+let sleepingChild = new Person({});
 const default_sleepingChild = new Person({
   name: "Sleeping Child",
   altNames: ["Sleeping Child", "Sleeping", "Child", "Sp"],
@@ -675,7 +673,7 @@ const default_BagOfJewels = new Commodity({
   },
 });
 
-let townMap = new Commodity({})
+let townMap = new Commodity({});
 const default_townMap = new Commodity({
   name: "Town Map",
   altNames: ["Town Map", "Map", "Tm"],
@@ -1058,7 +1056,7 @@ async function introduction() {
     );
     let heroName = await ask(`     What is your name, adventurer?"\n>_ `); // Player chooses their Hero Name for the story
     highlightedWords.push(heroName);
-  console.clear(); //! This empties the console. TODO
+    console.clear(); //! This empties the console. TODO
     colorChangeWords(
       `\nSimple Villager\n    "I see, your name is ${heroName},\n     Obviously, you were named after '${heroName} the Mighty' the Warrior of Legend\n     As I live and breathe, we are most fortunate for your arrival.\n\n     Recently, a missionary of rightous nuns was dispatched to aid our small hamlet.\n     However, as they were crossing a bridge over a ravine they were attacked by a horde of goblins.\n     The goblins cut the ropes of the bridge and the cart of nuns fell hundreds of feet onto the sharp rocks below.\n\n     Your assistance is needed posthaste, ${heroName}!\n     Only you can raise enough Gold to help us rebuild that broken bridge."\n`,
       highlightedWords
@@ -1622,87 +1620,93 @@ function setDefaults() {
   hero = JSON.parse(JSON.stringify(default_hero));
   retiredAdventurer = JSON.parse(JSON.stringify(default_retiredAdventurer));
   simpleVillager = JSON.parse(JSON.stringify(default_simpleVillager));
-  innkeeper = JSON.parse(JSON.stringify(default_innkeeper));
-  obnoxiousPatron = JSON.parse(JSON.stringify(default_obnoxiousPatron));
-  musicianWithABrokenArm = JSON.parse(JSON.stringify(default_musicianWithABrokenArm));
-  sleepingChild = JSON.parse(JSON.stringify(default_sleepingChild));
-  exhaustedParents = JSON.parse(JSON.stringify(default_exhaustedParents));
-  dragon = JSON.parse(JSON.stringify(default_dragon));
-  grimReaper = JSON.parse(JSON.stringify(default_grimReaper));
+  innkeeper = JSON.parse(JSON.stringify(default_innkeeper)); // TODO Has function
+  obnoxiousPatron = JSON.parse(JSON.stringify(default_obnoxiousPatron)); // TODO Has function
+  musicianWithABrokenArm = JSON.parse(
+    JSON.stringify(default_musicianWithABrokenArm)
+  ); // TODO Has function
+  sleepingChild = JSON.parse(JSON.stringify(default_sleepingChild)); // TODO Has function
+  exhaustedParents = JSON.parse(JSON.stringify(default_exhaustedParents)); // TODO Has function
+  dragon = JSON.parse(JSON.stringify(default_dragon)); // TODO Has function
+  grimReaper = JSON.parse(JSON.stringify(default_grimReaper)); // TODO Has function
   crookedSign = JSON.parse(JSON.stringify(default_crookedSign));
-  letterbox = JSON.parse(JSON.stringify(default_letterbox));
-  moundsOfGold = JSON.parse(JSON.stringify(default_moundsOfGold));
-  heapsOfSilver = JSON.parse(JSON.stringify(default_heapsOfSilver));
-  pileOfBones = JSON.parse(JSON.stringify(default_pileOfBones));
+  letterbox = JSON.parse(JSON.stringify(default_letterbox)); // TODO Has function
+  moundsOfGold = JSON.parse(JSON.stringify(default_moundsOfGold)); // TODO Has function
+  heapsOfSilver = JSON.parse(JSON.stringify(default_heapsOfSilver)); // TODO Has function
+  pileOfBones = JSON.parse(JSON.stringify(default_pileOfBones)); // TODO Has function
   // The following resets the default Locations
   townTriangle = JSON.parse(JSON.stringify(default_townTriangle));
-  //townTriangle = JSON.parse(JSON.stringify(default_townTriangle)));
   idiotsInspiringInn = JSON.parse(JSON.stringify(default_idiotsInspiringInn));
   upstairsRoom = JSON.parse(JSON.stringify(default_upstairsRoom));
-  forlornForestOfFatality = JSON.parse(JSON.stringify(default_forlornForestOfFatality));
-  deepWoodsOfCertainDoom = JSON.parse(JSON.stringify(default_deepWoodsOfCertainDoom));
+  forlornForestOfFatality = JSON.parse(
+    JSON.stringify(default_forlornForestOfFatality)
+  );
+  deepWoodsOfCertainDoom = JSON.parse(
+    JSON.stringify(default_deepWoodsOfCertainDoom)
+  );
   hagsHorridHovel = JSON.parse(JSON.stringify(default_hagsHorridHovel));
   dragonsKeep = JSON.parse(JSON.stringify(default_dragonsKeep));
   underworld = JSON.parse(JSON.stringify(default_underworld));
-// The following resets the default Commodity List
-sword = JSON.parse(JSON.stringify(default_sword));
-bucket = JSON.parse(JSON.stringify(default_bucket));
-premiumHorseManure = JSON.parse(JSON.stringify(default_premiumHorseManure));
-warmMeal = JSON.parse(JSON.stringify(default_warmMeal));
-BagOfJewels = JSON.parse(JSON.stringify(default_BagOfJewels));
-townMap = JSON.parse(JSON.stringify(default_townMap));
-warmApplePie = JSON.parse(JSON.stringify(default_warmApplePie));
-damagedLute = JSON.parse(JSON.stringify(default_damagedLute));
-pointlessRock = JSON.parse(JSON.stringify(default_pointlessRock));
-dragonsTreasure = JSON.parse(JSON.stringify(default_dragonsTreasure));
-deathsScythe = JSON.parse(JSON.stringify(default_deathsScythe));
+  // The following resets the default Commodity List
+  sword = JSON.parse(JSON.stringify(default_sword));
+  bucket = JSON.parse(JSON.stringify(default_bucket));
+  premiumHorseManure = JSON.parse(JSON.stringify(default_premiumHorseManure));
+  warmMeal = JSON.parse(JSON.stringify(default_warmMeal));
+  BagOfJewels = JSON.parse(JSON.stringify(default_BagOfJewels)); // TODO Has function
+  townMap = JSON.parse(JSON.stringify(default_townMap));
+  warmApplePie = JSON.parse(JSON.stringify(default_warmApplePie));
+  damagedLute = JSON.parse(JSON.stringify(default_damagedLute));
+  pointlessRock = JSON.parse(JSON.stringify(default_pointlessRock));
+  dragonsTreasure = JSON.parse(JSON.stringify(default_dragonsTreasure)); // TODO Has function
+  deathsScythe = JSON.parse(JSON.stringify(default_deathsScythe));
 }
 
 // This resets the Constructors
-function setDefaultsList() { //TODO Fix this
-locations = {
-  "Town Triangle": townTriangle,
-  "Idiot's Inspiring Inn": idiotsInspiringInn,
-  "Upstairs Room": upstairsRoom,
-  "Forlorn Forest Of Fatality": forlornForestOfFatality,
-  "Deep Woods Of Certain Doom": deepWoodsOfCertainDoom,
-  "Hag's Horrid Hovel": hagsHorridHovel,
-  "Dragon's Keep": dragonsKeep,
-  Underworld: underworld,
-};
+function setDefaultsList() {
+  //TODO Fix this
+  locations = {
+    "Town Triangle": townTriangle,
+    "Idiot's Inspiring Inn": idiotsInspiringInn,
+    "Upstairs Room": upstairsRoom,
+    "Forlorn Forest Of Fatality": forlornForestOfFatality,
+    "Deep Woods Of Certain Doom": deepWoodsOfCertainDoom,
+    "Hag's Horrid Hovel": hagsHorridHovel,
+    "Dragon's Keep": dragonsKeep,
+    Underworld: underworld,
+  };
 
-//All the Person(s) you can interact with
-interactPeople = {
-  "Retired Adventurer": retiredAdventurer,
-  "Simple Villager": simpleVillager,
-  Innkeeper: innkeeper,
-  "Obnoxious Patron": obnoxiousPatron,
-  "Musician With A Broken Arm": musicianWithABrokenArm,
-  "Sleeping Child": sleepingChild,
-  "Exhausted Parents": exhaustedParents,
-  Dragon: dragon,
-  "Grim Reaper": grimReaper,
-  "Crooked Sign": crookedSign,
-  Letterbox: letterbox,
-  "Mounds Of Gold": moundsOfGold,
-  "Heaps Of Silver": heapsOfSilver,
-  "Pile Of Bones": pileOfBones,
-};
+  //All the Person(s) you can interact with
+  interactPeople = {
+    "Retired Adventurer": retiredAdventurer,
+    "Simple Villager": simpleVillager,
+    Innkeeper: innkeeper,
+    "Obnoxious Patron": obnoxiousPatron,
+    "Musician With A Broken Arm": musicianWithABrokenArm,
+    "Sleeping Child": sleepingChild,
+    "Exhausted Parents": exhaustedParents,
+    Dragon: dragon,
+    "Grim Reaper": grimReaper,
+    "Crooked Sign": crookedSign,
+    Letterbox: letterbox,
+    "Mounds Of Gold": moundsOfGold,
+    "Heaps Of Silver": heapsOfSilver,
+    "Pile Of Bones": pileOfBones,
+  };
 
-//All the Items (Commodity) you can interact with
-interactCommodity = {
-  Sword: sword,
-  Bucket: bucket,
-  "Premium Horse Manure": premiumHorseManure,
-  "Warm Meal": warmMeal,
-  "Bag Of Jewels": BagOfJewels,
-  "Town Map": townMap,
-  "Warm Apple Pie": warmApplePie,
-  "Damaged Lute": damagedLute,
-  "Pointless Rock": pointlessRock,
-  "Dragon's Treasure": dragonsTreasure,
-  "Death's Scythe": deathsScythe,
-};
+  //All the Items (Commodity) you can interact with
+  interactCommodity = {
+    Sword: sword,
+    Bucket: bucket,
+    "Premium Horse Manure": premiumHorseManure,
+    "Warm Meal": warmMeal,
+    "Bag Of Jewels": BagOfJewels,
+    "Town Map": townMap,
+    "Warm Apple Pie": warmApplePie,
+    "Damaged Lute": damagedLute,
+    "Pointless Rock": pointlessRock,
+    "Dragon's Treasure": dragonsTreasure,
+    "Death's Scythe": deathsScythe,
+  };
 }
 
 // TODO objects are staying in previous locations and not resetting after a new game

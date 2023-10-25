@@ -270,8 +270,6 @@ let currentLocation = "Town Triangle"; // This updates as the player moves
 let heroName = ""; // Currently their is no input
 let userInput = ""; // Currently their is no input
 
-
-
 // List of Interactable Persons (People b/c Grammar)
 // Complicated Person, see "retiredAdventurerInteraction" function
 let retiredAdventurer = new Person({});
@@ -368,7 +366,7 @@ const default_musicianWithABrokenArm = new Person({
 });
 
 // Complicated Person, see "sleepingChildInteraction" function
-let sleepingChild = new Person({})
+let sleepingChild = new Person({});
 const default_sleepingChild = new Person({
   name: "Sleeping Child",
   altNames: ["Sleeping Child", "Sleeping", "Child", "Sp"],
@@ -675,7 +673,7 @@ const default_BagOfJewels = new Commodity({
   },
 });
 
-let townMap = new Commodity({})
+let townMap = new Commodity({});
 const default_townMap = new Commodity({
   name: "Town Map",
   altNames: ["Town Map", "Map", "Tm"],
@@ -734,9 +732,10 @@ const default_deathsScythe = new Commodity({
 });
 
 //! This entire section is a TEST
-if(hero === default_hero){ //! TEST
+if (hero === default_hero) {
+  //! TEST
   console.log("Heroes Match 1");
-}else{
+} else {
   console.log("Heroes don't Match 1");
 }
 console.log("HERO 1", hero);
@@ -746,9 +745,10 @@ console.log("Town Triangle 1", townTriangle);
 
 setDefaults(); //Sets all the Default Values
 
-if(hero === default_hero){ //! TEST
+if (hero === default_hero) {
+  //! TEST
   console.log("Heroes Match 2");
-}else{
+} else {
   console.log("Heroes don't Match 2");
 }
 console.log("HERO 2", hero);
@@ -1665,16 +1665,16 @@ function setDefaults() {
   hagsHorridHovel = default_hagsHorridHovel;
   dragonsKeep = default_dragonsKeep;
   underworld = default_underworld;
-// The following resets the default Commodity List
-sword = default_sword;
-bucket = default_bucket
-premiumHorseManure = default_premiumHorseManure
-warmMeal = default_warmMeal
-BagOfJewels = default_BagOfJewels
-townMap = default_townMap
-warmApplePie = default_warmApplePie
-damagedLute = default_damagedLute
-pointlessRock = default_pointlessRock
-dragonsTreasure = default_dragonsTreasure
-deathsScythe = default_deathsScythe
+  // The following resets the default Commodity List
+  sword = default_sword;
+  bucket = default_bucket;
+  premiumHorseManure = default_premiumHorseManure;
+  warmMeal = default_warmMeal;
+  BagOfJewels = default_BagOfJewels;
+  townMap = default_townMap;
+  warmApplePie = default_warmApplePie;
+  damagedLute = default_damagedLute;
+  pointlessRock = default_pointlessRock;
+  dragonsTreasure = default_dragonsTreasure;
+  deathsScythe = default_deathsScythe;
 }
