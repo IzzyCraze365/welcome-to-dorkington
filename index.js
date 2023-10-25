@@ -1648,45 +1648,45 @@ function setDefaults() {
   //! newObject = JSON.parse(JSON.stringify(default_object)); is what clones the objects so the defaults are not manipulated
   // TODO https://www.freecodecamp.org/news/clone-an-object-in-javascript/
   // The following resets the default Characters
-  hero = Object.assign({}, default_hero);
-  retiredAdventurer = Object.assign({}, default_retiredAdventurer);
-  simpleVillager = Object.assign({}, default_simpleVillager);
+  hero = Object.create(default_hero);
+  retiredAdventurer = Object.create(default_retiredAdventurer);
+  simpleVillager = Object.create(default_simpleVillager);
   //innkeeper = JSON.parse(JSON.stringify(default_innkeeper));//! This doesn't work because it calls a function
-  innkeeper = Object.assign({}, default_innkeeper);//! This doesn't work because it calls a function
+  innkeeper = Object.create(default_innkeeper);//! This doesn't work because it calls a function
   //innkeeper = {...default_innkeeper};//! This doesn't work because it calls a function
-  obnoxiousPatron = Object.assign({}, default_obnoxiousPatron);
-  musicianWithABrokenArm = Object.assign({}, default_musicianWithABrokenArm);
-  sleepingChild = Object.assign({}, default_sleepingChild);
-  exhaustedParents = Object.assign({}, default_exhaustedParents);
-  dragon = Object.assign({}, default_dragon);
-  grimReaper = Object.assign({}, default_grimReaper);
-  crookedSign = Object.assign({}, default_crookedSign);
-  letterbox = Object.assign({}, default_letterbox);
-  moundsOfGold = Object.assign({}, default_moundsOfGold);
-  heapsOfSilver = Object.assign({}, default_heapsOfSilver);
-  pileOfBones = Object.assign({}, default_pileOfBones);
+  obnoxiousPatron = Object.create(default_obnoxiousPatron);
+  musicianWithABrokenArm = Object.create(default_musicianWithABrokenArm);
+  sleepingChild = Object.create(default_sleepingChild);
+  exhaustedParents = Object.create(default_exhaustedParents);
+  dragon = Object.create(default_dragon);
+  grimReaper = Object.create(default_grimReaper);
+  crookedSign = Object.create(default_crookedSign);
+  letterbox = Object.create(default_letterbox);
+  moundsOfGold = Object.create(default_moundsOfGold);
+  heapsOfSilver = Object.create(default_heapsOfSilver);
+  pileOfBones = Object.create(default_pileOfBones);
   // The following resets the default Locations
-  townTriangle = Object.assign({}, default_townTriangle);
+  townTriangle = Object.create(default_townTriangle);
   //townTriangle = JSON.parse(JSON.stringify(default_townTriangle));
-  idiotsInspiringInn = Object.assign({}, default_idiotsInspiringInn);
-  upstairsRoom = Object.assign({}, default_upstairsRoom);
-  forlornForestOfFatality = Object.assign({}, default_forlornForestOfFatality);
-  deepWoodsOfCertainDoom = Object.assign({}, default_deepWoodsOfCertainDoom);
-  hagsHorridHovel = Object.assign({}, default_hagsHorridHovel);
-  dragonsKeep = Object.assign({}, default_dragonsKeep);
-  underworld = Object.assign({}, default_underworld);
+  idiotsInspiringInn = Object.create(default_idiotsInspiringInn);
+  upstairsRoom = Object.create(default_upstairsRoom);
+  forlornForestOfFatality = Object.create(default_forlornForestOfFatality);
+  deepWoodsOfCertainDoom = Object.create(default_deepWoodsOfCertainDoom);
+  hagsHorridHovel = Object.create(default_hagsHorridHovel);
+  dragonsKeep = Object.create(default_dragonsKeep);
+  underworld = Object.create(default_underworld);
 // The following resets the default Commodity List
-sword = Object.assign({}, default_sword);
-bucket = Object.assign({}, default_bucket);
-premiumHorseManure = Object.assign({}, default_premiumHorseManure);
-warmMeal = Object.assign({}, default_warmMeal);
-BagOfJewels = Object.assign({}, default_BagOfJewels);
-townMap = Object.assign({}, default_townMap);
-warmApplePie = Object.assign({}, default_warmApplePie);
-damagedLute = Object.assign({}, default_damagedLute);
-pointlessRock = Object.assign({}, default_pointlessRock);
-dragonsTreasure = Object.assign({}, default_dragonsTreasure);
-deathsScythe = Object.assign({}, default_deathsScythe);
+sword = Object.create(default_sword);
+bucket = Object.create(default_bucket);
+premiumHorseManure = Object.create(default_premiumHorseManure);
+warmMeal = Object.create(default_warmMeal);
+BagOfJewels = Object.create(default_BagOfJewels);
+townMap = Object.create(default_townMap);
+warmApplePie = Object.create(default_warmApplePie);
+damagedLute = Object.create(default_damagedLute);
+pointlessRock = Object.create(default_pointlessRock);
+dragonsTreasure = Object.create(default_dragonsTreasure);
+deathsScythe = Object.create(default_deathsScythe);
 }
 
 // This resets the Constructors
