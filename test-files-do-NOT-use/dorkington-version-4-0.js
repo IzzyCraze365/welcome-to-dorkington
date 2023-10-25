@@ -1,5 +1,5 @@
 // Welcome to Dorkington - A Text Based Adventure
-// Version 4.0 //! IN PROGRESS
+// Version 4.0
 // John Isabella III
 
 //TODO I set a bunch of defaults into the code, but now it is having issue reading .includes or .length when comparing my objects
