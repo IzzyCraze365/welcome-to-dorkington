@@ -925,10 +925,6 @@ async function heroAction(heroName) {
         highlightedWords
       );
     }
-    console.log("HERO 5", hero); //! TEST
-    console.log("DEFAULT HERO 5", default_hero);
-    console.log("Town Triangle Default 5", default_townTriangle);
-    console.log("Town Triangle 5", townTriangle);
   } else if (action === "Take" || action === "T") {
     // Adds item to Backpack, Removes item from Current Room
     let takeItem = await ask(`\nWhat would you like to take?\n>_ `);
@@ -1449,34 +1445,11 @@ async function playAgain() {
   );
   restart = capitalizeFirstLetter(restart);
   if (restart === ("P" || "Play")) {
-  //! This entire section is a TEST
-  if(hero === default_hero){ //! TEST
-    console.log("Heroes Match 1");
-  }else{
-    console.log("Heroes don't Match 1");
-  }
-  console.log("HERO 1", hero);
-  console.log("DEFAULT HERO 1", default_hero);
-  console.log("Town Triangle Default 1", default_townTriangle);
-  console.log("Town Triangle 1", townTriangle);
-  
-  setDefaults(); //Sets all the Default Values
-  setDefaultsList(); //TODO Fix this
-  
-  if(hero === default_hero){ //! TEST
-    console.log("Heroes Match 2");
-  }else{
-    console.log("Heroes don't Match 2");
-  }
-  console.log("HERO 2", hero);
-  console.log("DEFAULT HERO 2", default_hero);
-  console.log("Town Triangle Default 2", default_townTriangle);
-  console.log("Town Triangle 2", townTriangle);
     start(); // Runs the game from the Introduction //! Currently does NOT reset the Class values
     //console.log(`Please type "node index" in the terminal to Play Again.`);
-    //quitGame();
   } else if (restart === "E" || restart === "Exit") {
     quitGame();
+    //process.exit(); //TODO add this
   } else if (restart === "C" || restart === "Credits") {
     viewCredits();
   } /* else {
@@ -1491,8 +1464,7 @@ function quitGame() {
     `\nThis is where the Adventure of ${heroName} comes to an end.\n`,
     highlightedWords
   );
-  titleScreen(); //! TEST
-  //process.exit(); //TODO
+  titleScreen();
 }
 
 // Function to Generate a Random Number
@@ -1647,7 +1619,6 @@ function setDefaults() {
   heroName = "";
   userInput = "";
   //! newObject = JSON.parse(JSON.stringify(default_object)); is what clones the objects so the defaults are not manipulated
-  // TODO https://www.freecodecamp.org/news/clone-an-object-in-javascript/
   // The following resets the default Characters
   hero = JSON.parse(JSON.stringify(default_hero));
   retiredAdventurer = JSON.parse(JSON.stringify(default_retiredAdventurer));
