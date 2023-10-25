@@ -868,8 +868,8 @@ titleScreen(); // Title Screen & Art
 //! Function List
 // This is the function that Plays the Game
 async function start() {
-  //setDefaults();
-  //setDefaultsList(); //TODO Fix this
+  setDefaults();
+  setDefaultsList(); //TODO Fix this
   heroName = await introduction(); //The player will have to name themselves;
   colorChangeWords(
     `\n${heroName}, you find yourself at the Beginning of a Grand Adventure!\nAnd it all starts right here in this quaint little hamlet of Dorkington.\nIt is probably a good idea to "Look" around.\n(type "Help" to see a list of available actions.)`,
@@ -1491,7 +1491,8 @@ function quitGame() {
     `\nThis is where the Adventure of ${heroName} comes to an end.\n`,
     highlightedWords
   );
-  process.exit();
+  titleScreen(); //! TEST
+  //process.exit(); //TODO
 }
 
 // Function to Generate a Random Number
@@ -1648,45 +1649,43 @@ function setDefaults() {
   //! newObject = JSON.parse(JSON.stringify(default_object)); is what clones the objects so the defaults are not manipulated
   // TODO https://www.freecodecamp.org/news/clone-an-object-in-javascript/
   // The following resets the default Characters
-  hero = {...default_hero};
-  retiredAdventurer = {...default_retiredAdventurer};
-  simpleVillager = {...default_simpleVillager};
-  //innkeeper = JSON.parse(JSON.stringify(default_innkeeper));//! This doesn't work because it calls a function
-  innkeeper = {...default_innkeeper};//! This doesn't work because it calls a function
-  //innkeeper = {...default_innkeeper};//! This doesn't work because it calls a function
-  obnoxiousPatron = {...default_obnoxiousPatron};
-  musicianWithABrokenArm = {...default_musicianWithABrokenArm};
-  sleepingChild = {...default_sleepingChild};
-  exhaustedParents = {...default_exhaustedParents};
-  dragon = {...default_dragon};
-  grimReaper = {...default_grimReaper};
-  crookedSign = {...default_crookedSign};
-  letterbox = {...default_letterbox};
-  moundsOfGold = {...default_moundsOfGold};
-  heapsOfSilver = {...default_heapsOfSilver};
-  pileOfBones = {...default_pileOfBones};
+  hero = JSON.parse(JSON.stringify(default_hero));
+  retiredAdventurer = JSON.parse(JSON.stringify(default_retiredAdventurer));
+  simpleVillager = JSON.parse(JSON.stringify(default_simpleVillager));
+  innkeeper = JSON.parse(JSON.stringify(default_innkeeper));
+  obnoxiousPatron = JSON.parse(JSON.stringify(default_obnoxiousPatron));
+  musicianWithABrokenArm = JSON.parse(JSON.stringify(default_musicianWithABrokenArm));
+  sleepingChild = JSON.parse(JSON.stringify(default_sleepingChild));
+  exhaustedParents = JSON.parse(JSON.stringify(default_exhaustedParents));
+  dragon = JSON.parse(JSON.stringify(default_dragon));
+  grimReaper = JSON.parse(JSON.stringify(default_grimReaper));
+  crookedSign = JSON.parse(JSON.stringify(default_crookedSign));
+  letterbox = JSON.parse(JSON.stringify(default_letterbox));
+  moundsOfGold = JSON.parse(JSON.stringify(default_moundsOfGold));
+  heapsOfSilver = JSON.parse(JSON.stringify(default_heapsOfSilver));
+  pileOfBones = JSON.parse(JSON.stringify(default_pileOfBones));
   // The following resets the default Locations
-  townTriangle = {...default_townTriangle};
-  //townTriangle = JSON.parse(JSON.stringify(default_townTriangle)};
-  idiotsInspiringInn = {...default_idiotsInspiringInn};
-  upstairsRoom = {...default_upstairsRoom};
-  forlornForestOfFatality = {...default_forlornForestOfFatality};
-  deepWoodsOfCertainDoom = {...default_deepWoodsOfCertainDoom};
-  hagsHorridHovel = {...default_hagsHorridHovel};
-  dragonsKeep = {...default_dragonsKeep};
-  underworld = {...default_underworld};
+  townTriangle = JSON.parse(JSON.stringify(default_townTriangle));
+  //townTriangle = JSON.parse(JSON.stringify(default_townTriangle)));
+  idiotsInspiringInn = JSON.parse(JSON.stringify(default_idiotsInspiringInn));
+  upstairsRoom = JSON.parse(JSON.stringify(default_upstairsRoom));
+  forlornForestOfFatality = JSON.parse(JSON.stringify(default_forlornForestOfFatality));
+  deepWoodsOfCertainDoom = JSON.parse(JSON.stringify(default_deepWoodsOfCertainDoom));
+  hagsHorridHovel = JSON.parse(JSON.stringify(default_hagsHorridHovel));
+  dragonsKeep = JSON.parse(JSON.stringify(default_dragonsKeep));
+  underworld = JSON.parse(JSON.stringify(default_underworld));
 // The following resets the default Commodity List
-sword = {...default_sword};
-bucket = {...default_bucket};
-premiumHorseManure = {...default_premiumHorseManure};
-warmMeal = {...default_warmMeal};
-BagOfJewels = {...default_BagOfJewels};
-townMap = {...default_townMap};
-warmApplePie = {...default_warmApplePie};
-damagedLute = {...default_damagedLute};
-pointlessRock = {...default_pointlessRock};
-dragonsTreasure = {...default_dragonsTreasure};
-deathsScythe = {...default_deathsScythe};
+sword = JSON.parse(JSON.stringify(default_sword));
+bucket = JSON.parse(JSON.stringify(default_bucket));
+premiumHorseManure = JSON.parse(JSON.stringify(default_premiumHorseManure));
+warmMeal = JSON.parse(JSON.stringify(default_warmMeal));
+BagOfJewels = JSON.parse(JSON.stringify(default_BagOfJewels));
+townMap = JSON.parse(JSON.stringify(default_townMap));
+warmApplePie = JSON.parse(JSON.stringify(default_warmApplePie));
+damagedLute = JSON.parse(JSON.stringify(default_damagedLute));
+pointlessRock = JSON.parse(JSON.stringify(default_pointlessRock));
+dragonsTreasure = JSON.parse(JSON.stringify(default_dragonsTreasure));
+deathsScythe = JSON.parse(JSON.stringify(default_deathsScythe));
 }
 
 // This resets the Constructors
