@@ -731,31 +731,6 @@ const default_deathsScythe = new Commodity({
   followUp: () => {},
 });
 
-//! This entire section is a TEST
-if (hero === default_hero) {
-  //! TEST
-  console.log("Heroes Match 1");
-} else {
-  console.log("Heroes don't Match 1");
-}
-console.log("HERO 1", hero);
-console.log("DEFAULT HERO 1", default_hero);
-console.log("Town Triangle Default 1", default_townTriangle);
-console.log("Town Triangle 1", townTriangle);
-
-setDefaults(); //Sets all the Default Values
-
-if (hero === default_hero) {
-  //! TEST
-  console.log("Heroes Match 2");
-} else {
-  console.log("Heroes don't Match 2");
-}
-console.log("HERO 2", hero);
-console.log("DEFAULT HERO 2", default_hero);
-console.log("Town Triangle Default 2", default_townTriangle);
-console.log("Town Triangle 2", townTriangle);
-
 setDefaults(); //Sets all the Default Values
 
 // See functions "locationMove" & "locationUpdate" to see how you move
@@ -892,6 +867,7 @@ titleScreen(); // Title Screen & Art
 // This is the function that Plays the Game
 async function start() {
   setDefaults();
+  setDefaultsList(); //TODO Fix this
   heroName = await introduction(); //The player will have to name themselves;
   colorChangeWords(
     `\n${heroName}, you find yourself at the Beginning of a Grand Adventure!\nAnd it all starts right here in this quaint little hamlet of Dorkington.\nIt is probably a good idea to "Look" around.\n(type "Help" to see a list of available actions.)`,
@@ -1072,7 +1048,7 @@ async function introduction() {
   const welcomeMessage = `Yes (y) or No (n)\n>_ `;
   let answer = await ask(welcomeMessage);
   answer = capitalizePlayerInput(answer); // Normal Mode or super-easy don't have to do anything mode.
-  //console.clear(); //! This empties the console. TODO Add me back
+  console.clear(); //! This empties the console. TODO
   if (answer === "Yes" || answer === "Y") {
     colorChangeWords(
       `\nA Simple Villager, whom bares an uncanny resemblance to you apporaches.\n    "Greetings stranger!\n     It is not often a new adventurer enters our peaceful village of Dorkington.`,
@@ -1080,7 +1056,7 @@ async function introduction() {
     );
     let heroName = await ask(`     What is your name, adventurer?"\n>_ `); // Player chooses their Hero Name for the story
     highlightedWords.push(heroName);
-    //console.clear(); //! This empties the console.TODO Add me back
+    console.clear(); //! This empties the console. TODO
     colorChangeWords(
       `\nSimple Villager\n    "I see, your name is ${heroName},\n     Obviously, you were named after '${heroName} the Mighty' the Warrior of Legend\n     As I live and breathe, we are most fortunate for your arrival.\n\n     Recently, a missionary of rightous nuns was dispatched to aid our small hamlet.\n     However, as they were crossing a bridge over a ravine they were attacked by a horde of goblins.\n     The goblins cut the ropes of the bridge and the cart of nuns fell hundreds of feet onto the sharp rocks below.\n\n     Your assistance is needed posthaste, ${heroName}!\n     Only you can raise enough Gold to help us rebuild that broken bridge."\n`,
       highlightedWords
@@ -1455,7 +1431,7 @@ function colorChangeWords(string, highlightedWords) {
 // Help Menu
 function helpMenu() {
   colorChangeWords(
-    `\nYou may perform any of the following actions:\n     Type "Move" or "m" = Move to a Nearby Location.\n     Type "Look" or "l" = Look around for Clues and Items.\n     Type "Interact" or "i" = Interact with a Person or Item\n     Type "Status" or "s" = Check your General Wellbeing \n     Type "Backpack" or "b" = Check your Backpack's Inventory\n     Type "Take" or "t" = Pick up an Item from this Location\n     Type "Drop" or "d" = Drop an Item to this Location\n     Type "Help" or "h" = Open the Help Screen\n     Type "Exit" or "e" = Exit the Game at any time`,
+    `\nYou may perform any of the following actions:\n     Type "Move" or "m" = Move to a Nearby Location.\n     Type "Look" or "l" = Look around for Clues and Items.\n     Type "Interact" or "i" = Interact with a Person or Item\n     Type "Status" or "s" = Check your General Wellbeing \n     Type "Backpack" or "b" = Check your Backpack's Inventory\n     Type "Take" or "t" = Pick up an Item from this Location\n     Type "Drop" or "d" = Drop an Item to this Location\n     Type "Help" or "h" = Open the Help Screen\n     Type "Exit" or "e" = Exit to the Title Screen at any time`,
     highlightedWords
   );
 }
@@ -1469,7 +1445,6 @@ async function playAgain() {
   if (restart === ("P" || "Play")) {
     start(); // Runs the game from the Introduction //! Currently does NOT reset the Class values
     //console.log(`Please type "node index" in the terminal to Play Again.`);
-    quitGame();
   } else if (restart === "E" || restart === "Exit") {
     quitGame();
   } else if (restart === "C" || restart === "Credits") {
@@ -1486,7 +1461,7 @@ function quitGame() {
     `\nThis is where the Adventure of ${heroName} comes to an end.\n`,
     highlightedWords
   );
-  process.exit();
+  titleScreen();
 }
 
 // Function to Generate a Random Number
@@ -1640,41 +1615,106 @@ function setDefaults() {
   currentLocation = "Town Triangle"; // Start back at Square 1
   heroName = "";
   userInput = "";
+  //! newObject = JSON.parse(JSON.stringify(default_object)); is what clones the objects so the defaults are not manipulated
   // The following resets the default Characters
-  hero = default_hero;
-  retiredAdventurer = default_retiredAdventurer;
-  simpleVillager = default_simpleVillager;
-  innkeeper = default_innkeeper;
-  obnoxiousPatron = default_obnoxiousPatron;
-  musicianWithABrokenArm = default_musicianWithABrokenArm;
-  sleepingChild = default_sleepingChild;
-  exhaustedParents = default_exhaustedParents;
-  dragon = default_dragon;
-  grimReaper = default_grimReaper;
-  crookedSign = default_crookedSign;
-  letterbox = default_letterbox;
-  moundsOfGold = default_moundsOfGold;
-  heapsOfSilver = default_heapsOfSilver;
-  pileOfBones = default_pileOfBones;
+  hero = JSON.parse(JSON.stringify(default_hero));
+  retiredAdventurer = JSON.parse(JSON.stringify(default_retiredAdventurer));
+  simpleVillager = JSON.parse(JSON.stringify(default_simpleVillager));
+
+  console.log("innkeeper1", innkeeper);
+  innkeeper = JSON.parse(JSON.stringify(default_innkeeper)); // TODO Has function
+  console.log("innkeeper2", innkeeper);
+  console.log("innkeeper.interact 2", innkeeper.interact);
+  innkeeper.interact = {...default_innkeeper.interact};
+  console.log("innkeeper3", innkeeper);
+  console.log("innkeeper.interact 3", innkeeper.interact);
+
+  obnoxiousPatron = JSON.parse(JSON.stringify(default_obnoxiousPatron)); // TODO Has function
+  musicianWithABrokenArm = JSON.parse(
+    JSON.stringify(default_musicianWithABrokenArm)
+  ); // TODO Has function
+  sleepingChild = JSON.parse(JSON.stringify(default_sleepingChild)); // TODO Has function
+  exhaustedParents = JSON.parse(JSON.stringify(default_exhaustedParents)); // TODO Has function
+  dragon = JSON.parse(JSON.stringify(default_dragon)); // TODO Has function
+  grimReaper = JSON.parse(JSON.stringify(default_grimReaper)); // TODO Has function
+  crookedSign = JSON.parse(JSON.stringify(default_crookedSign));
+  letterbox = JSON.parse(JSON.stringify(default_letterbox)); // TODO Has function
+  moundsOfGold = JSON.parse(JSON.stringify(default_moundsOfGold)); // TODO Has function
+  heapsOfSilver = JSON.parse(JSON.stringify(default_heapsOfSilver)); // TODO Has function
+  pileOfBones = JSON.parse(JSON.stringify(default_pileOfBones)); // TODO Has function
   // The following resets the default Locations
-  townTriangle = default_townTriangle;
-  idiotsInspiringInn = default_idiotsInspiringInn;
-  upstairsRoom = default_upstairsRoom;
-  forlornForestOfFatality = default_forlornForestOfFatality;
-  deepWoodsOfCertainDoom = default_deepWoodsOfCertainDoom;
-  hagsHorridHovel = default_hagsHorridHovel;
-  dragonsKeep = default_dragonsKeep;
-  underworld = default_underworld;
+  townTriangle = JSON.parse(JSON.stringify(default_townTriangle));
+  idiotsInspiringInn = JSON.parse(JSON.stringify(default_idiotsInspiringInn));
+  upstairsRoom = JSON.parse(JSON.stringify(default_upstairsRoom));
+  forlornForestOfFatality = JSON.parse(
+    JSON.stringify(default_forlornForestOfFatality)
+  );
+  deepWoodsOfCertainDoom = JSON.parse(
+    JSON.stringify(default_deepWoodsOfCertainDoom)
+  );
+  hagsHorridHovel = JSON.parse(JSON.stringify(default_hagsHorridHovel));
+  dragonsKeep = JSON.parse(JSON.stringify(default_dragonsKeep));
+  underworld = JSON.parse(JSON.stringify(default_underworld));
   // The following resets the default Commodity List
-  sword = default_sword;
-  bucket = default_bucket;
-  premiumHorseManure = default_premiumHorseManure;
-  warmMeal = default_warmMeal;
-  BagOfJewels = default_BagOfJewels;
-  townMap = default_townMap;
-  warmApplePie = default_warmApplePie;
-  damagedLute = default_damagedLute;
-  pointlessRock = default_pointlessRock;
-  dragonsTreasure = default_dragonsTreasure;
-  deathsScythe = default_deathsScythe;
+  sword = JSON.parse(JSON.stringify(default_sword));
+  bucket = JSON.parse(JSON.stringify(default_bucket));
+  premiumHorseManure = JSON.parse(JSON.stringify(default_premiumHorseManure));
+  warmMeal = JSON.parse(JSON.stringify(default_warmMeal));
+  BagOfJewels = JSON.parse(JSON.stringify(default_BagOfJewels)); // TODO Has function
+  townMap = JSON.parse(JSON.stringify(default_townMap));
+  warmApplePie = JSON.parse(JSON.stringify(default_warmApplePie));
+  damagedLute = JSON.parse(JSON.stringify(default_damagedLute));
+  pointlessRock = JSON.parse(JSON.stringify(default_pointlessRock));
+  dragonsTreasure = JSON.parse(JSON.stringify(default_dragonsTreasure)); // TODO Has function
+  deathsScythe = JSON.parse(JSON.stringify(default_deathsScythe));
 }
+
+// This resets the Constructors
+function setDefaultsList() {
+  //TODO Fix this
+  locations = {
+    "Town Triangle": townTriangle,
+    "Idiot's Inspiring Inn": idiotsInspiringInn,
+    "Upstairs Room": upstairsRoom,
+    "Forlorn Forest Of Fatality": forlornForestOfFatality,
+    "Deep Woods Of Certain Doom": deepWoodsOfCertainDoom,
+    "Hag's Horrid Hovel": hagsHorridHovel,
+    "Dragon's Keep": dragonsKeep,
+    Underworld: underworld,
+  };
+
+  //All the Person(s) you can interact with
+  interactPeople = {
+    "Retired Adventurer": retiredAdventurer,
+    "Simple Villager": simpleVillager,
+    Innkeeper: innkeeper,
+    "Obnoxious Patron": obnoxiousPatron,
+    "Musician With A Broken Arm": musicianWithABrokenArm,
+    "Sleeping Child": sleepingChild,
+    "Exhausted Parents": exhaustedParents,
+    Dragon: dragon,
+    "Grim Reaper": grimReaper,
+    "Crooked Sign": crookedSign,
+    Letterbox: letterbox,
+    "Mounds Of Gold": moundsOfGold,
+    "Heaps Of Silver": heapsOfSilver,
+    "Pile Of Bones": pileOfBones,
+  };
+
+  //All the Items (Commodity) you can interact with
+  interactCommodity = {
+    Sword: sword,
+    Bucket: bucket,
+    "Premium Horse Manure": premiumHorseManure,
+    "Warm Meal": warmMeal,
+    "Bag Of Jewels": BagOfJewels,
+    "Town Map": townMap,
+    "Warm Apple Pie": warmApplePie,
+    "Damaged Lute": damagedLute,
+    "Pointless Rock": pointlessRock,
+    "Dragon's Treasure": dragonsTreasure,
+    "Death's Scythe": deathsScythe,
+  };
+}
+
+// TODO objects are staying in previous locations and not resetting after a new game
