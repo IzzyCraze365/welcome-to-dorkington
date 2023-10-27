@@ -1051,15 +1051,13 @@ function setDefaults() {
     "Healthy." // Status is Healthy
   );
   // The following is a list of Objects that define our rooms.
-  townTriangle = new Room(
-    "Town Triangle",
-    ["Town Triangle", "Town", "Triangle", "Tt"],
-    false,
-    [],
-    ["Retired Adventurer", "Simple Villager"],
-    ["Idiot's Inspiring Inn", "Forlorn Forest Of Fatality"],
-    "\nThe Town Triangle\nThe center of a rustic hamlet of Dorkington in the shape of a triangle.\nIt is usually a vibrant hub of activity, but most people are still asleep. \nThe only inhabitants, presently present, are the Simple Villager and the Retired Adventurer.\n\nFrom here you can go to the Idiot's Inspiring Inn\nor travel into the Forlorn Forest Of Fatality.\n"
-  );
+  townTriangle.name = "Town Triangle";
+  townTriangle.altNames = ["Town Triangle", "Town", "Triangle", "Tt"];
+  townTriangle.doorLock = false;
+  townTriangle.inventory = [];
+  townTriangle.interact = ["Retired Adventurer", "Simple Villager"];
+  townTriangle.possibleLocations = ["Idiot's Inspiring Inn", "Forlorn Forest Of Fatality"];
+  townTriangle.description = "\nThe Town Triangle\nThe center of a rustic hamlet of Dorkington in the shape of a triangle.\nIt is usually a vibrant hub of activity, but most people are still asleep. \nThe only inhabitants, presently present, are the Simple Villager and the Retired Adventurer.\n\nFrom here you can go to the Idiot's Inspiring Inn\nor travel into the Forlorn Forest Of Fatality.\n";
 
   idiotsInspiringInn = new Room(
     "Idiot's Inspiring Inn",
