@@ -124,10 +124,10 @@ let currentLocation = "Town Triangle"; // This updates as the player moves
 let heroName = "Taran"; // Default Name
 let userInput = ""; // Currently their is no input
 //Player Inventory
-let hero = 0;//new Player({});
+let hero = 0; //new Player({});
 // The following is a list of Objects that define our rooms.
-let townTriangle = 0;//new Room({});
-let idiotsInspiringInn = 0;//new Room({});
+let townTriangle = 0; //new Room({});
+let idiotsInspiringInn = 0; //new Room({});
 let upstairsRoom = new Room({});
 let forlornForestOfFatality = new Room({});
 let deepWoodsOfCertainDoom = new Room({});
@@ -137,7 +137,7 @@ let underworld = new Room({});
 // List of Interactable Persons (People b/c Grammar)
 let retiredAdventurer = new Person({});
 let simpleVillager = new Person({});
-let innkeeper = 0;//new Person({});
+let innkeeper = 0; //new Person({});
 let obnoxiousPatron = new Person({});
 let musicianWithABrokenArm = new Person({});
 let sleepingChild = new Person({});
@@ -912,7 +912,7 @@ function unknownPrompt(input) {
 async function viewCredits() {
   console.clear();
   console.log(`
-  _____________DORKINGTON Ver. 4.5____________
+  _____________DORKINGTON Ver. 4.6____________
 
   John A. Isabella III.........Game Coder / Story Writer
   

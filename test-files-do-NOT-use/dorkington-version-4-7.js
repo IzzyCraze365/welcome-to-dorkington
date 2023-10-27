@@ -1,5 +1,5 @@
 // Welcome to Dorkington - A Text Based Adventure
-// Version 4.6 //! IN PROGRESS
+// Version 4.7 //! FAILURE- reverted back to 4.6
 // John Isabella III
 
 const readline = require("readline");
@@ -70,51 +70,50 @@ function secretNameSelector() {
 // Player's Backpack Inventory Management
 class Player {
   constructor(name, inventory, status) {
-    (this.name = name), (this.inventory = inventory);
-    this.status = status;
+    (this.name = name), (this.inventory = inventory), (this.status = status);
   }
 }
 //TODO the Player constructor is different, match the ones below to it to see if that fixes the problem.
 // A List of All Interactable Items
 class Commodity {
-  constructor({ name, altNames, interact, followUp }) {
-    this.name = name;
-    this.altNames = altNames;
-    this.interact = interact;
-    this.followUp = followUp;
+  constructor(name, altNames, interact, followUp) {
+    (this.name = name),
+      (this.altNames = altNames),
+      (this.interact = interact),
+      (this.followUp = followUp);
   }
 }
 
 // A List of All Interactable People
 class Person {
-  constructor({ name, altNames, inventory, interact, followUp, status }) {
-    this.altNames = altNames;
-    this.interact = interact;
-    this.inventory = inventory;
-    this.name = name;
-    this.followUp = followUp;
-    this.status = status;
+  constructor(name, altNames, inventory, interact, followUp, status) {
+    (this.name = name),
+      (this.altNames = altNames),
+      (this.inventory = inventory),
+      (this.interact = interact),
+      (this.followUp = followUp),
+      (this.status = status);
   }
 }
 
 //List of all the Locations in this Adventure, containing everything they have.
 class Room {
-  constructor({
+  constructor(
     name,
     altNames,
     doorLock,
     inventory,
     interact,
     possibleLocations,
-    description,
-  }) {
-    this.altNames = altNames;
-    this.description = description;
-    this.doorLock = doorLock;
-    this.interact = interact;
-    this.inventory = inventory;
-    this.name = name;
-    this.possibleLocations = possibleLocations;
+    description
+  ) {
+    (this.altNames = altNames),
+      (this.description = description),
+      (this.doorLock = doorLock),
+      (this.interact = interact),
+      (this.inventory = inventory),
+      (this.name = name),
+      (this.possibleLocations = possibleLocations);
   }
 }
 
@@ -912,7 +911,7 @@ function unknownPrompt(input) {
 async function viewCredits() {
   console.clear();
   console.log(`
-  _____________DORKINGTON Ver. 4.6____________
+  _____________DORKINGTON Ver. 4.7 BAD____________
 
   John A. Isabella III.........Game Coder / Story Writer
   
@@ -1052,20 +1051,21 @@ function setDefaults() {
     "Healthy." // Status is Healthy
   );
   // The following is a list of Objects that define our rooms.
-  townTriangle = new Room({
-    name: "Town Triangle",
-    altNames: ["Town Triangle", "Town", "Triangle", "Tt"],
-    doorLock: false,
-    inventory: [],
-    interact: ["Retired Adventurer", "Simple Villager"],
-    possibleLocations: ["Idiot's Inspiring Inn", "Forlorn Forest Of Fatality"],
-    description:
-      "\nThe Town Triangle\nThe center of a rustic hamlet of Dorkington in the shape of a triangle.\nIt is usually a vibrant hub of activity, but most people are still asleep. \nThe only inhabitants, presently present, are the Simple Villager and the Retired Adventurer.\n\nFrom here you can go to the Idiot's Inspiring Inn\nor travel into the Forlorn Forest Of Fatality.\n",
-  });
+  townTriangle.name = "Town Triangle";
+  townTriangle.altNames = ["Town Triangle", "Town", "Triangle", "Tt"];
+  townTriangle.doorLock = false;
+  townTriangle.inventory = [];
+  townTriangle.interact = ["Retired Adventurer", "Simple Villager"];
+  townTriangle.possibleLocations = [
+    "Idiot's Inspiring Inn",
+    "Forlorn Forest Of Fatality",
+  ];
+  townTriangle.description =
+    "\nThe Town Triangle\nThe center of a rustic hamlet of Dorkington in the shape of a triangle.\nIt is usually a vibrant hub of activity, but most people are still asleep. \nThe only inhabitants, presently present, are the Simple Villager and the Retired Adventurer.\n\nFrom here you can go to the Idiot's Inspiring Inn\nor travel into the Forlorn Forest Of Fatality.\n";
 
-  idiotsInspiringInn = new Room({
-    name: "Idiot's Inspiring Inn",
-    altNames: [
+  idiotsInspiringInn = new Room(
+    "Idiot's Inspiring Inn",
+    [
       "Idiot's Inspiring Inn",
       "Idiots Inspiring Inn",
       "Idiot",
@@ -1075,28 +1075,26 @@ function setDefaults() {
       "Inn",
       "Iii",
     ],
-    doorLock: false,
-    inventory: ["Bag Of Jewels"],
-    interact: ["Innkeeper", "Obnoxious Patron", "Musician With A Broken Arm"],
-    possibleLocations: ["Town Triangle", "Upstairs Room"],
-    description:
-      "\nThe Idiot's Inspiring Inn\nThe most popular tavern in Dorkington, \nprimarily because it is the only tavern in the entire village. \nThe Innkeeper behind the bar is preparing a meal for a Musician With A Broken Arm. \nIn the back of the room, an Obnoxious Patron is slovenly eating a meal.\nA Bag Of Jewels is scattered across the patron's table.\n\nFrom here you can head outside to the Town Triangle\nor go to the Upstairs Room.\n",
-  });
+    false,
+    ["Bag Of Jewels"],
+    ["Innkeeper", "Obnoxious Patron", "Musician With A Broken Arm"],
+    ["Town Triangle", "Upstairs Room"],
+    "\nThe Idiot's Inspiring Inn\nThe most popular tavern in Dorkington, \nprimarily because it is the only tavern in the entire village. \nThe Innkeeper behind the bar is preparing a meal for a Musician With A Broken Arm. \nIn the back of the room, an Obnoxious Patron is slovenly eating a meal.\nA Bag Of Jewels is scattered across the patron's table.\n\nFrom here you can head outside to the Town Triangle\nor go to the Upstairs Room.\n"
+  );
 
-  upstairsRoom = new Room({
-    name: "Upstairs Room",
-    altNames: ["Upstairs Room", "Upstairs", "Room", "Ur"],
-    doorLock: false,
-    inventory: [],
-    interact: ["Sleeping Child", "Exhausted Parents"],
-    possibleLocations: ["Idiot's Inspiring Inn"],
-    description:
-      "The Upstairs Room\nHeading up the stairs you come across\na pair of Exhausted Parents reading just outside of a room.\nInside the room, a Sleeping Child lays motionless on the bed.\n\nFrom here you can head back downstairs to the Idiot's Inspiring Inn.\n",
-  });
+  upstairsRoom = new Room(
+    "Upstairs Room",
+    ["Upstairs Room", "Upstairs", "Room", "Ur"],
+    false,
+    [],
+    ["Sleeping Child", "Exhausted Parents"],
+    ["Idiot's Inspiring Inn"],
+    "The Upstairs Room\nHeading up the stairs you come across\na pair of Exhausted Parents reading just outside of a room.\nInside the room, a Sleeping Child lays motionless on the bed.\n\nFrom here you can head back downstairs to the Idiot's Inspiring Inn.\n"
+  );
 
-  forlornForestOfFatality = new Room({
-    name: "Forlorn Forest Of Fatality",
-    altNames: [
+  forlornForestOfFatality = new Room(
+    "Forlorn Forest Of Fatality",
+    [
       "Forlorn Forest Of Fatality",
       "Forlorn Forest",
       "Forlorn",
@@ -1105,17 +1103,16 @@ function setDefaults() {
       "Ffof",
       "Fff",
     ],
-    doorLock: false,
-    inventory: ["Damaged Lute"],
-    interact: ["Crooked Sign"],
-    possibleLocations: ["Town Triangle", "Deep Woods Of Certain Doom"],
-    description:
-      "\nThe Forlorn Forest Of Fatality\nThe edge of the forest seems welcoming enough.\nAs you travel down the overgrown path\nyou see a Crooked Sign hanging on a weatherbeaten post.\n\nFrom here you can head back to safety in the Town Triangle\nor venture onward into the Deep Woods Of Certain Doom.\n",
-  });
+    false,
+    ["Damaged Lute"],
+    ["Crooked Sign"],
+    ["Town Triangle", "Deep Woods Of Certain Doom"],
+    "\nThe Forlorn Forest Of Fatality\nThe edge of the forest seems welcoming enough.\nAs you travel down the overgrown path\nyou see a Crooked Sign hanging on a weatherbeaten post.\n\nFrom here you can head back to safety in the Town Triangle\nor venture onward into the Deep Woods Of Certain Doom.\n"
+  );
 
-  deepWoodsOfCertainDoom = new Room({
-    name: "Deep Woods Of Certain Doom",
-    altNames: [
+  deepWoodsOfCertainDoom = new Room(
+    "Deep Woods Of Certain Doom",
+    [
       "Deep Woods Of Certain Doom",
       "Deep Woods",
       "Certain Doom",
@@ -1125,21 +1122,16 @@ function setDefaults() {
       "Doom",
       "Dwocd",
     ],
-    doorLock: true,
-    inventory: ["Pointless Rock"],
-    interact: [],
-    possibleLocations: [
-      "Forlorn Forest Of Fatality",
-      "Hag's Horrid Hovel",
-      "Dragon's Keep",
-    ],
-    description:
-      "\nThe Deep Woods Of Certain Doom\nAs soon as you step into the shadows of the trees,\nyou can feel the warmth pulled from your body,\nas if by an unnatural force.\nYou know that this is the point of no return.\nYou steel yourself as you continue to march onward.\n\nFrom here you can head back to the Forlorn Forest Of Fatality,\nfollow the path to the Hag's Horrid Hovel\nor trek towards the Dragon's Keep.\n",
-  });
+    true,
+    ["Pointless Rock"],
+    [],
+    ["Forlorn Forest Of Fatality", "Hag's Horrid Hovel", "Dragon's Keep"],
+    "\nThe Deep Woods Of Certain Doom\nAs soon as you step into the shadows of the trees,\nyou can feel the warmth pulled from your body,\nas if by an unnatural force.\nYou know that this is the point of no return.\nYou steel yourself as you continue to march onward.\n\nFrom here you can head back to the Forlorn Forest Of Fatality,\nfollow the path to the Hag's Horrid Hovel\nor trek towards the Dragon's Keep.\n"
+  );
 
-  hagsHorridHovel = new Room({
-    name: "Hag's Horrid Hovel",
-    altNames: [
+  hagsHorridHovel = new Room(
+    "Hag's Horrid Hovel",
+    [
       "Hag's Horrid Hovel",
       "Hags Horrid Hovel",
       "Hag's Hovel",
@@ -1150,64 +1142,62 @@ function setDefaults() {
       "Hovel",
       "Hhh",
     ],
-    doorLock: false,
-    inventory: [],
-    interact: ["Letterbox"],
-    possibleLocations: ["Deep Woods Of Certain Doom"],
-    description:
-      "\nThe Hag's Horrid Hovel\nA gnarled pile of sticks and mud twist together to form a makeshift shelter.\nOut of the braided husk of a dying tree sits a simple Letterbox.\n\nFrom here you can follow the path back to the Deep Woods Of Certain Doom.\n",
-  });
+    false,
+    [],
+    ["Letterbox"],
+    ["Deep Woods Of Certain Doom"],
+    "\nThe Hag's Horrid Hovel\nA gnarled pile of sticks and mud twist together to form a makeshift shelter.\nOut of the braided husk of a dying tree sits a simple Letterbox.\n\nFrom here you can follow the path back to the Deep Woods Of Certain Doom.\n"
+  );
 
-  dragonsKeep = new Room({
-    name: "Dragon's Keep",
-    altNames: ["Dragon's Keep", "Dragons Keep", "Keep", "Dk"],
-    doorLock: false,
-    inventory: [],
-    interact: ["Dragon", "Mounds Of Gold", "Heaps Of Silver", "Pile Of Bones"],
-    possibleLocations: ["Deep Woods Of Certain Doom"],
-    description:
-      "\nDragon's Keep\nThe air smells of ash, as you approach a dark cave.\nYou can see the light being reflected off of shimmering Mounds Of Gold and Heaps Of Silver.\nIn the back of the cave you spot a large red Dragon, sleeping upon a massive Pile Of Bones.\n\nFrom here you can run away and end up in the Deep Woods Of Certain Doom.\n",
-  });
+  dragonsKeep = new Room(
+    "Dragon's Keep",
+    ["Dragon's Keep", "Dragons Keep", "Keep", "Dk"],
+    false,
+    [],
+    ["Dragon", "Mounds Of Gold", "Heaps Of Silver", "Pile Of Bones"],
+    ["Deep Woods Of Certain Doom"],
+    "\nDragon's Keep\nThe air smells of ash, as you approach a dark cave.\nYou can see the light being reflected off of shimmering Mounds Of Gold and Heaps Of Silver.\nIn the back of the cave you spot a large red Dragon, sleeping upon a massive Pile Of Bones.\n\nFrom here you can run away and end up in the Deep Woods Of Certain Doom.\n"
+  );
 
-  underworld = new Room({
-    name: "Underworld",
-    altNames: ["Underworld", "U"],
-    doorLock: "No Escape",
-    inventory: [],
-    interact: ["Grim Reaper"],
-    possibleLocations: [
+  underworld = new Room(
+    "Underworld",
+    ["Underworld", "U"],
+    "No Escape",
+    [],
+    ["Grim Reaper"],
+    [
       `... \nFunny there are no exits...\nThere is nowhere to go,\nthere is no escape.`,
     ],
-    description: `-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X\n\nYou could feel your consciousness leave your body.\nThen suddenly without warning you were here.\nYou know without a shadow of a doubt that you are in the Underworld.\n\nInside a dark cavern.  The only source of light...\nA flickering torch held by a robed figure,\nwhom you instinctually know is the personification of Death, the Grim Reaper.\n`,
-  });
+    `-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X\n\nYou could feel your consciousness leave your body.\nThen suddenly without warning you were here.\nYou know without a shadow of a doubt that you are in the Underworld.\n\nInside a dark cavern.  The only source of light...\nA flickering torch held by a robed figure,\nwhom you instinctually know is the personification of Death, the Grim Reaper.\n`
+  );
 
   // List of Interactable Persons (People b/c Grammar)
   // Complicated Person, see "retiredAdventurerInteraction" function
-  retiredAdventurer = new Person({
-    name: "Retired Adventurer",
-    altNames: ["Retired Adventurer", "Retired", "Adventurer", "Ra"],
-    inventory: ["Death's Scythe", "Town Map"],
-    interact: `\nThe Retired Adventurer looks you up and down.\n    "I daresay, I hath been retired only since morn.\n     Tis good of yee to taketh the mantle up.\n     Dost thou even hoist?\n     Alas, I shalth spend me retirment playing me favorite game...\n    'Guess the Number'\n     Doth thou wisheth to play?`,
-    followUp: () => {}, //Game of Guess the Number
-    status: 0, //This is a counter
-  });
+  retiredAdventurer = new Person(
+    "Retired Adventurer",
+    ["Retired Adventurer", "Retired", "Adventurer", "Ra"],
+    ["Death's Scythe", "Town Map"],
+    `\nThe Retired Adventurer looks you up and down.\n    "I daresay, I hath been retired only since morn.\n     Tis good of yee to taketh the mantle up.\n     Dost thou even hoist?\n     Alas, I shalth spend me retirment playing me favorite game...\n    'Guess the Number'\n     Doth thou wisheth to play?`,
+    () => {}, //Game of Guess the Number
+    0 //This is a counter
+  );
 
-  simpleVillager = new Person({
-    name: "Simple Villager",
-    altNames: ["Simple Villager", "Simple", "Villager", "Sv"],
-    inventory: [],
-    interact: `Simple Villager\n    "Thank you for all your assistance brave adventurer.\n     Your services are invaluable to us here in Dorkington.\n     Only you can save us from the horrors that plague us.\n     Being stranded in a cozy little hamlet with no Gold to fix our broken bridge.\n     We lead a truly cursed life."`,
-    followUp: () => {},
-    status: "Normal",
-  });
+  simpleVillager = new Person(
+    "Simple Villager",
+    ["Simple Villager", "Simple", "Villager", "Sv"],
+    [],
+    `Simple Villager\n    "Thank you for all your assistance brave adventurer.\n     Your services are invaluable to us here in Dorkington.\n     Only you can save us from the horrors that plague us.\n     Being stranded in a cozy little hamlet with no Gold to fix our broken bridge.\n     We lead a truly cursed life."`,
+    () => {},
+    "Normal"
+  );
 
-  innkeeper = new Person({
-    name: "Innkeeper",
-    altNames: ["Innkeeper", "Ik", "I"],
-    inventory: ["Warm Meal"],
+  innkeeper = new Person(
+    "Innkeeper",
+    ["Innkeeper", "Ik", "I"],
+    ["Warm Meal"],
     // The interaction changes after the first time you speak
-    interact: `Innkeeper\n    "Hallooo there, Adventurer!\n     Welcome to the Idiot's Inspring Inn where our hospitality is as warm as our food.\n     Don't believe me?\n     Help yourself to a Warm Meal, and feel free to talk to anybody round these parts.\n     We're all the friendly sort,\n     of course the Musician With A Broken Arm seems a tad jumpy,\n     and the Obnoxious Patron back there is a strange one\n     who's fixing to get into a tussel.`,
-    followUp: () => {
+    `Innkeeper\n    "Hallooo there, Adventurer!\n     Welcome to the Idiot's Inspring Inn where our hospitality is as warm as our food.\n     Don't believe me?\n     Help yourself to a Warm Meal, and feel free to talk to anybody round these parts.\n     We're all the friendly sort,\n     of course the Musician With A Broken Arm seems a tad jumpy,\n     and the Obnoxious Patron back there is a strange one\n     who's fixing to get into a tussel.`,
+    () => {
       itemExchange(
         innkeeper.inventory,
         locations[currentLocation].inventory,
@@ -1216,17 +1206,17 @@ function setDefaults() {
       console.log("TESTING TESTING");
       innkeeper.interact = `Innkeeper\n    "Welcome to the Idiot's Inspring Inn where our hospitality is as warm as our food.\n     Good to see you again, ${heroName}!\n     Feel free to talk to anybody round these parts.\n     We're the friendly sort of folk,\n     and we all have some nuggets of useful information.`;
     },
-    status: "Normal",
-  });
+    "Normal"
+  );
 
   // This is a complicated Person, key to solving Puzzles
-  obnoxiousPatron = new Person({
-    name: "Obnoxious Patron",
-    altNames: ["Obnoxious Patron", "Obnoxious", "Patron", "Op"],
-    inventory: [], //Reward for Solving Puzzle
-    interact: `As you approach the individual at the far end of the room,`,
+  obnoxiousPatron = new Person(
+    "Obnoxious Patron",
+    ["Obnoxious Patron", "Obnoxious", "Patron", "Op"],
+    [], //Reward for Solving Puzzle
+    `As you approach the individual at the far end of the room,`,
     //FollowUp changes based off the this.status
-    followUp: () => {
+    () => {
       if (obnoxiousPatron.status === "Happy") {
         colorChangeWords(
           `the Obnoxious Patron grins at you with a split lip.\n\nObnoxious Patron\n    "That was a good fight, bub.\n     You make an excellent sparring partner.\n     Listen up, if you wanna stay alive.\n     Don't go into the Deep Woods Of Certain Doom without a Sword.\n     Doesn't matter how good you fight, you need a weapon."\n`,
@@ -1244,17 +1234,17 @@ function setDefaults() {
         );
       }
     },
-    status: "Normal", //Options Normal, Happy, Beaten
-  });
+    "Normal" //Options Normal, Happy, Beaten
+  );
 
   // Complicated Person, see "musicianSongInteraction" function
-  musicianWithABrokenArm = new Person({
-    name: "Musician With A Broken Arm",
-    altNames: ["Musician With A Broken Arm", "Musician", "Broken Arm", "Mwaba"],
-    inventory: [],
-    interact: `\nMusician With A Broken Arm\n    "You... who are you?!?!?!?!\n     It doesn't matter, you can't help me.\n     I was attacked by many a foul beast out in the Forlorn Forest Of Fatality!\n     They broke my arm, causing me to drop my Damaged Lute.\n     That will teach me to go out into the woods without a weapon.\n     I wish my instrument could be returned to me.\n     Music brings comfort.\n     Especially in these dark times where monsters hide amoung us...\n`,
+  musicianWithABrokenArm = new Person(
+    "Musician With A Broken Arm",
+    ["Musician With A Broken Arm", "Musician", "Broken Arm", "Mwaba"],
+    [],
+    `\nMusician With A Broken Arm\n    "You... who are you?!?!?!?!\n     It doesn't matter, you can't help me.\n     I was attacked by many a foul beast out in the Forlorn Forest Of Fatality!\n     They broke my arm, causing me to drop my Damaged Lute.\n     That will teach me to go out into the woods without a weapon.\n     I wish my instrument could be returned to me.\n     Music brings comfort.\n     Especially in these dark times where monsters hide amoung us...\n`,
     //if the hero has the Damaged Lute the interaction changes
-    followUp: () => {
+    () => {
       if (hero.inventory.includes("Damaged Lute") === true) {
         colorChangeWords(
           `\nYou reach into your backpack and pull out the Musician's Damaged Lute.\nTears of joy appear in the Musician's eyes.\n\nMusician With A Broken Arm.\n    "My Broke Lute!\n    I never thought I would see it again!\n    Thank you so much, ${heroName}.\n    I shall use the power of music to fight against the darkness."\n\nThe musician plucks the one string on the lute that hasn't snapped.\nAn eerie sound resonates through the room.\n\n    "I should tell you, one of the foul beasts from the woods has infiltrated our humble hamlet.\n     A creature of darkness has possessed the Sleeping Child.\n     But it will only make itself known to people like myself whom have been injured."\n`,
@@ -1269,17 +1259,17 @@ function setDefaults() {
         musicianWithABrokenArm.status = "Singing";
       }
     },
-    status: "Normal", //Options "Normal" "Singing"
-  });
+    "Normal" //Options "Normal" "Singing"
+  );
 
   // Complicated Person, see "sleepingChildInteraction" function
-  sleepingChild = new Person({
-    name: "Sleeping Child",
-    altNames: ["Sleeping Child", "Sleeping", "Child", "Sp"],
-    inventory: ["Warm Apple Pie"], //Reward for Solving Puzzle
-    interact: "\nA motionless child lays asleep on an oversized bed.",
+  sleepingChild = new Person(
+    "Sleeping Child",
+    ["Sleeping Child", "Sleeping", "Child", "Sp"],
+    ["Warm Apple Pie"], //Reward for Solving Puzzle
+    "\nA motionless child lays asleep on an oversized bed.",
     //Locked Door & puzzle challenge threshold
-    followUp: () => {
+    () => {
       if (sleepingChild.status === "Freed") {
         colorChangeWords(
           `It looks as though the Sleeping Child is finally resting peacfully.`,
@@ -1299,17 +1289,16 @@ function setDefaults() {
       } else {
       }
     },
-    status: "Normal", //Options Normal, Possessed, Freed
-  });
+    "Normal" //Options Normal, Possessed, Freed
+  );
 
-  exhaustedParents = new Person({
-    name: "Exhausted Parents",
-    altNames: ["Exhausted Parents", "Exhausted", "Parents", "Ep"],
-    inventory: ["Town Map"], // Trade for Food
-    interact:
-      "\nA pair of weary parents are looking over a Town Map.\nThey are talking in hushed voices about where to send their Sleeping Child to school.\nYou can barely hear their voices over their rumbling stomaches.\nThey should probably eat something.\n",
+  exhaustedParents = new Person(
+    "Exhausted Parents",
+    ["Exhausted Parents", "Exhausted", "Parents", "Ep"],
+    ["Town Map"], // Trade for Food
+    "\nA pair of weary parents are looking over a Town Map.\nThey are talking in hushed voices about where to send their Sleeping Child to school.\nYou can barely hear their voices over their rumbling stomaches.\nThey should probably eat something.\n",
     //Follow up changes based on an item presents.
-    followUp: () => {
+    () => {
       if (hero.inventory.includes("Warm Meal")) {
         colorChangeWords(
           `\nAs you approach them, with food in hand, the two look up at you.\n\nExhausted Parents\n    "Thank you for bringing us a Warm Meal, ${heroName}.\n     We have been so busy that we haven't had a chance to eat."\n
@@ -1325,17 +1314,17 @@ function setDefaults() {
         exhaustedParents.interact = `Exhausted Parents\n    "Thank you for bringing us a Warm Meal, ${heroName}.\n     We have been so busy that we haven't had a chance to eat."\n\nThe pair continue to eat their food, oblivious to the world around them.`;
       }
     },
-    status: "Normal",
-  });
+    "Normal"
+  );
 
   // This is a complicated Person, Success means winning the game.
-  dragon = new Person({
-    name: "Dragon",
-    altNames: ["Dragon", "D"],
-    inventory: ["Dragon's Treasure"],
-    interact: `\nYou dash forward, hoping to attack the Dragon while it slumbered.\nBut it was all a ploy.\nAs you closed in on the monster,\nits eyes snapped open and it let out a mighty roar.\nIt was merely pretending to sleep to gain the advantage.`,
+  dragon = new Person(
+    "Dragon",
+    ["Dragon", "D"],
+    ["Dragon's Treasure"],
+    `\nYou dash forward, hoping to attack the Dragon while it slumbered.\nBut it was all a ploy.\nAs you closed in on the monster,\nits eyes snapped open and it let out a mighty roar.\nIt was merely pretending to sleep to gain the advantage.`,
     //Followup changes based on inventory
-    followUp: () => {
+    () => {
       if (hero.inventory.includes("Death's Scythe") === true) {
         colorChangeWords(
           `\nBut that advantage will not be enough to save the beast.\nYou trivially dodge its attacks before jumping high in the air.\nYou raise Death's Scythe aloft and slice it across the Dragon's body.\nThe Dragon immediately perishes.\nLeaving behind its horde of loot for the taking.\n\nDon't forget to "Interact" with the Dragon's Treasure, it is your reason for being here.`,
@@ -1365,17 +1354,16 @@ function setDefaults() {
         locationUpdate("HERO-DEATH");
       }
     },
-    status: "Normal",
-  });
+    "Normal"
+  );
 
-  grimReaper = new Person({
-    name: "Grim Reaper",
-    altNames: ["Grim Reaper", "Grim", "Reaper", "Death", "Gr"],
-    inventory: ["Death's Scythe"], //Reward for Solving the Puzzle
-    interact:
-      "You approach the Grim Reaper.\nEvery step closer to the cloaked figure chills you to your bones.\nAs you approach you see the skeletal face of Death\nwatching your every move with the piercing gaze of red eyes.",
+  grimReaper = new Person(
+    "Grim Reaper",
+    ["Grim Reaper", "Grim", "Reaper", "Death", "Gr"],
+    ["Death's Scythe"], //Reward for Solving the Puzzle
+    "You approach the Grim Reaper.\nEvery step closer to the cloaked figure chills you to your bones.\nAs you approach you see the skeletal face of Death\nwatching your every move with the piercing gaze of red eyes.",
     //Followup changes based on inventroy
-    followUp: () => {
+    () => {
       if (hero.inventory.includes("Warm Apple Pie") === true) {
         colorChangeWords(
           `\n\nGrim Reaper\n    "Welcome to the Underwold, ${heroName}.\n     What's that delicious aroma in the air?\n     Do you have a freshly-baked Warm Apple Pie with you?\n     I haven't had one of those in a millennium.\n     Tell you what, if you give me your dessert,\n     I will give you a second chance at life.\n     I will even give you my weapon to sweeten the deal."\n\nYou receive Death's Scythe.\n`,
@@ -1394,62 +1382,62 @@ function setDefaults() {
         playAgain();
       }
     },
-    status: "Normal",
-  });
+    "Normal"
+  );
 
-  crookedSign = new Person({
-    name: "Crooked Sign",
-    altNames: ["Crooked Sign", "Crooked", "Sign", "Cs"],
-    inventory: [],
-    interact: `\nA worn sign at the intersection of two paths.\nIt reads:\n    "Abandon hope all yee who enter here!\n     This forest are a living maze that you'll not want to be lost in.\n     There be deadly monsters within these trees."\n`,
-    followUp: () => {},
-    status: "Normal",
-  });
+  crookedSign = new Person(
+    "Crooked Sign",
+    ["Crooked Sign", "Crooked", "Sign", "Cs"],
+    [],
+    `\nA worn sign at the intersection of two paths.\nIt reads:\n    "Abandon hope all yee who enter here!\n     This forest are a living maze that you'll not want to be lost in.\n     There be deadly monsters within these trees."\n`,
+    () => {},
+    "Normal"
+  );
 
-  letterbox = new Person({
-    name: "Letterbox",
-    altNames: ["Letterbox", "L"],
-    inventory: [],
-    interact: "",
-    followUp: () => {
+  letterbox = new Person(
+    "Letterbox",
+    ["Letterbox", "L"],
+    [],
+    "",
+    () => {
       colorChangeWords(
         `\nA plain wooded box that is void of all postage.\nThere is something carved into it... "${secretName}"\n`,
         highlightedWords
       );
     },
-    status: "Normal",
-  });
+    "Normal"
+  );
 
-  moundsOfGold = new Person({
-    name: "Mounds Of Gold",
-    altNames: ["Mounds Of Gold", "Mounds", "Mound", "Gold", "Mog"],
-    inventory: [],
-    interact: `\nYour eyes don't deceive you.  There are piles upon piles of Gold in this cave.\nIt is more wealth than you have ever dreamed of.\nCertainly enough to rebuild the town's broken bridge.\n\nYou daydream about the heroic feast the village will throw you.\n     The cooked meats assorted deserts.\n     The dancing into the night with an attractive villager.\n     Turns out that villager was your soulmate!\n     Eventually the two of you will be married\n     and have 3 children, 2 dogs and a hampster.\n     It was an incredibly wonderful life!\n\nOr it would have been...\nYou were so busy daydreaming about the Mounds Of Gold you did not realize\nthe Dragon had stirred from its slumber.\nIt attacked you while you were not paying attention...\n`,
-    followUp: () => {
+  moundsOfGold = new Person(
+    "Mounds Of Gold",
+    ["Mounds Of Gold", "Mounds", "Mound", "Gold", "Mog"],
+    [],
+    `\nYour eyes don't deceive you.  There are piles upon piles of Gold in this cave.\nIt is more wealth than you have ever dreamed of.\nCertainly enough to rebuild the town's broken bridge.\n\nYou daydream about the heroic feast the village will throw you.\n     The cooked meats assorted deserts.\n     The dancing into the night with an attractive villager.\n     Turns out that villager was your soulmate!\n     Eventually the two of you will be married\n     and have 3 children, 2 dogs and a hampster.\n     It was an incredibly wonderful life!\n\nOr it would have been...\nYou were so busy daydreaming about the Mounds Of Gold you did not realize\nthe Dragon had stirred from its slumber.\nIt attacked you while you were not paying attention...\n`,
+    () => {
       hero.status = "Dead";
       locationUpdate("HERO-DEATH");
     },
-    status: "Normal",
-  });
+    "Normal"
+  );
 
-  heapsOfSilver = new Person({
-    name: "Heaps Of Silver",
-    altNames: ["Heaps Of Silver", "Heaps", "Heap", "Silver", "Hos"],
-    inventory: [],
-    interact: `\nSilver!  You have never seen so many glittering coins.\nThere are heaps upon heaps of silver in this cave.\nIt is more wealth than you have ever dreamed of.\n\nYou daydream all that you could do with this silver.\n     Buy fancy armor and weapons.\n     Melt it down and have a statue crafted in your image.\n     You could make a large pile of coins and just go swimming in it!\n     There is nothing better than having all that silver at your fingertips.\n     You will live like a king!\n\nOr you would have...\nSadly, you were so distracted by the Heaps Of Silver you did not realize\nthe Dragon had stirred from its slumber.\nIt attacked you while you were not paying attention...\n`,
-    followUp: () => {
+  heapsOfSilver = new Person(
+    "Heaps Of Silver",
+    ["Heaps Of Silver", "Heaps", "Heap", "Silver", "Hos"],
+    [],
+    `\nSilver!  You have never seen so many glittering coins.\nThere are heaps upon heaps of silver in this cave.\nIt is more wealth than you have ever dreamed of.\n\nYou daydream all that you could do with this silver.\n     Buy fancy armor and weapons.\n     Melt it down and have a statue crafted in your image.\n     You could make a large pile of coins and just go swimming in it!\n     There is nothing better than having all that silver at your fingertips.\n     You will live like a king!\n\nOr you would have...\nSadly, you were so distracted by the Heaps Of Silver you did not realize\nthe Dragon had stirred from its slumber.\nIt attacked you while you were not paying attention...\n`,
+    () => {
       hero.status = "Dead";
       locationUpdate("HERO-DEATH");
     },
-    status: "Normal",
-  });
+    "Normal"
+  );
 
-  pileOfBones = new Person({
-    name: "Pile Of Bones",
-    altNames: ["Pile Of Bones", "Pile", "Bones", "Pob"],
-    inventory: [],
-    interact: `\nAs you approach the back of the cave you see the massive Pile Of Bones littering the Dragon's Keep.\nYou look closely at the bones, and your heart starts to sink.\n     You get the feeling that you have been here before...\n     That you have tried to fight the Dragon and failed...\n     You realize that the bones on the floor are your bones!!!\n     You have gotten to this point so many times!!!\n     This is where you die!\n     Over and over again, as though your life is some twisted game\n\nYou push these thoughts out of your head.`,
-    followUp: () => {
+  pileOfBones = new Person(
+    "Pile Of Bones",
+    ["Pile Of Bones", "Pile", "Bones", "Pob"],
+    [],
+    `\nAs you approach the back of the cave you see the massive Pile Of Bones littering the Dragon's Keep.\nYou look closely at the bones, and your heart starts to sink.\n     You get the feeling that you have been here before...\n     That you have tried to fight the Dragon and failed...\n     You realize that the bones on the floor are your bones!!!\n     You have gotten to this point so many times!!!\n     This is where you die!\n     Over and over again, as though your life is some twisted game\n\nYou push these thoughts out of your head.`,
+    () => {
       colorChangeWords(
         `     "You are "${heroName} the Mightier" and you will succeed!"\nAre your last thoughts as you turn towards the now awake Dragon.\nIt roars inches from your face.\nIts breath hot upon your cheeks.\nThe roar was so loud and so sudden that you were scared to death...`,
         highlightedWords
@@ -1457,28 +1445,27 @@ function setDefaults() {
       hero.status = "Dead (again)";
       locationUpdate("HERO-DEATH");
     },
-    status: "Normal",
-  });
+    "Normal"
+  );
 
   // List of Interactable Items
-  sword = new Commodity({
-    name: "Sword",
-    altNames: ["Sword"],
-    interact:
-      "\nThe sword of an adventurer.\nThe blade is very sharp.\nA lethal weapon, to be sure.",
-    followUp: () => {},
-  });
+  sword = new Commodity(
+    "Sword",
+    ["Sword"],
+    "\nThe sword of an adventurer.\nThe blade is very sharp.\nA lethal weapon, to be sure.",
+    () => {}
+  );
 
-  bucket = new Commodity({
-    name: "Bucket",
-    altNames: ["Bucket"],
-    interact: "\nA simple bucket, with a hole in the bottom.",
-    followUp: () => {},
-  });
+  bucket = new Commodity(
+    "Bucket",
+    ["Bucket"],
+    "\nA simple bucket, with a hole in the bottom.",
+    () => {}
+  );
 
-  premiumHorseManure = new Commodity({
-    name: "Premium Horse Manure",
-    altNames: [
+  premiumHorseManure = new Commodity(
+    "Premium Horse Manure",
+    [
       "Premium Horse Manure",
       "Horse Manure",
       "Premium",
@@ -1486,32 +1473,23 @@ function setDefaults() {
       "Manure",
       "Phm",
     ],
-    interact:
-      "\nIf it looks like shit,\nsmells like shit,\nand tastes like shit...\nIt'll make the crops grow tall!",
-    followUp: () => {},
-  });
+    "\nIf it looks like shit,\nsmells like shit,\nand tastes like shit...\nIt'll make the crops grow tall!",
+    () => {}
+  );
 
-  warmMeal = new Commodity({
-    name: "Warm Meal",
-    altNames: ["Warm Meal", "Meal", "Wm"],
-    interact:
-      "\nThe meal consists of a plain gruel.\nTasteless but still comforting.",
-    followUp: () => {},
-  });
+  warmMeal = new Commodity(
+    "Warm Meal",
+    ["Warm Meal", "Meal", "Wm"],
+    "\nThe meal consists of a plain gruel.\nTasteless but still comforting.",
+    () => {}
+  );
 
   // This is a complicated Item, the inventory of the Hero and Room are factored in determining the outcome.
-  BagOfJewels = new Commodity({
-    name: "Bag Of Jewels",
-    altNames: [
-      "Bag Of Jewels",
-      "Bags Of Jewels",
-      "Bag Of Jewel",
-      "Bag",
-      "Jewels",
-      "Boj",
-    ],
-    interact: "A bag of priceless gems.",
-    followUp: () => {
+  BagOfJewels = new Commodity(
+    "Bag Of Jewels",
+    ["Bag Of Jewels", "Bags Of Jewels", "Bag Of Jewel", "Bag", "Jewels", "Boj"],
+    "A bag of priceless gems.",
+    () => {
       if (obnoxiousPatron.status === "Normal") {
         colorChangeWords(
           `\nAs you reach for the Bag Of Jewels, the table next you you is slammed into a wall.\n\nObnoxious Patron\n    "I warned you to stay away from my Bag Of Jewels, bub!\n     Now, I'm gonna beat you to a pulp!"\n\nThe Obnoxious Patron's hands become balled into fists and they assume a fighting stance.\nSuddenly, spoons erupt from the Obnoxious Patron's fists, three spoons per fist, right between each knuckle.`,
@@ -1563,58 +1541,54 @@ function setDefaults() {
         idiotsInspiringInn.description =
           "\nThe Idiot's Inspiring Inn\nThe most popular tavern in Dorkington, \nprimarily because it is the only tavern in the entire village. \nThe Innkeeper behind the bar is preparing a meal for a Musician With A Broken Arm. \nIn the back of the room, an Obnoxious Patron is slovenly eating a meal.\n\nFrom here you can head outside to the Town Triangle\nor go to the Upstairs Room.\n";
       }
-    },
-  });
+    }
+  );
 
-  townMap = new Commodity({
-    name: "Town Map",
-    altNames: ["Town Map", "Map", "Tm"],
-    interact:
-      "\nA Map of Dorkington and the surrounding forest.\nYou can't get lost with this in hand.\n",
-    followUp: () => {},
-  });
+  townMap = new Commodity(
+    "Town Map",
+    ["Town Map", "Map", "Tm"],
+    "\nA Map of Dorkington and the surrounding forest.\nYou can't get lost with this in hand.\n",
+    () => {}
+  );
 
-  warmApplePie = new Commodity({
-    name: "Warm Apple Pie",
-    altNames: ["Warm Apple Pie", "Apple Pie", "Apple", "Pie", "Wap"],
-    interact:
-      "\nFresh baked pie is the best.\nEveryone loves apple pie.\nAnd people do crazy, death-defying things when they are in love.\n",
-    followUp: () => {},
-  });
+  warmApplePie = new Commodity(
+    "Warm Apple Pie",
+    ["Warm Apple Pie", "Apple Pie", "Apple", "Pie", "Wap"],
+    "\nFresh baked pie is the best.\nEveryone loves apple pie.\nAnd people do crazy, death-defying things when they are in love.\n",
+    () => {}
+  );
 
-  damagedLute = new Commodity({
-    name: "Damaged Lute",
-    altNames: ["Damaged Lute", "Damaged", "Lute", "Dl"],
-    interact:
-      "\nA musical instrument that has seen better days.\nIt appears to have been damaged by some kind of wild animal.",
-    followUp: () => {},
-  });
+  damagedLute = new Commodity(
+    "Damaged Lute",
+    ["Damaged Lute", "Damaged", "Lute", "Dl"],
+    "\nA musical instrument that has seen better days.\nIt appears to have been damaged by some kind of wild animal.",
+    () => {}
+  );
 
-  pointlessRock = new Commodity({
-    name: "Pointless Rock",
-    altNames: ["Pointless Rock", "Pointless", "Rock", "Pr"],
-    interact: "\nA simple rock that has no innate value.\n",
-    followUp: () => {},
-  });
+  pointlessRock = new Commodity(
+    "Pointless Rock",
+    ["Pointless Rock", "Pointless", "Rock", "Pr"],
+    "\nA simple rock that has no innate value.\n",
+    () => {}
+  );
 
-  dragonsTreasure = new Commodity({
-    name: "Dragon's Treasure",
-    altNames: ["Dragon's Treasure", "Dragons Treasure", "Treasure", "Dt"],
-    interact: `\nYour prize for slaying the Dragon!\nWealth beyond your wildest dreams.\nYou return to the hamlet, with all the Gold in tow.\nAll the villagers praise your efforts.`,
-    followUp: () => {
+  dragonsTreasure = new Commodity(
+    "Dragon's Treasure",
+    ["Dragon's Treasure", "Dragons Treasure", "Treasure", "Dt"],
+    `\nYour prize for slaying the Dragon!\nWealth beyond your wildest dreams.\nYou return to the hamlet, with all the Gold in tow.\nAll the villagers praise your efforts.`,
+    () => {
       colorChangeWords(
         `They will sing your praises from now until the end of time.\nAll will know your name:\n     "${heroName} the Mightier"\n     the Hero of Dorkington!\n\nCongratulations, You Won!`,
         highlightedWords
       );
       playAgain();
-    },
-  });
+    }
+  );
 
-  deathsScythe = new Commodity({
-    name: "Death's Scythe",
-    altNames: ["Death's Scythe", "Deaths Scythe", "Scythe", "Ds"],
-    interact:
-      "\nThe immortal weapon of the manifestation of Death.\nA single scratch would cause any creature to immediately perish.\nUse with caution.",
-    followUp: () => {},
-  });
+  deathsScythe = new Commodity(
+    "Death's Scythe",
+    ["Death's Scythe", "Deaths Scythe", "Scythe", "Ds"],
+    "\nThe immortal weapon of the manifestation of Death.\nA single scratch would cause any creature to immediately perish.\nUse with caution.",
+    () => {}
+  );
 }
