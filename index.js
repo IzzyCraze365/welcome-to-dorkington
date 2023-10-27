@@ -70,51 +70,50 @@ function secretNameSelector() {
 // Player's Backpack Inventory Management
 class Player {
   constructor(name, inventory, status) {
-    (this.name = name), (this.inventory = inventory);
-    this.status = status;
+    (this.name = name), (this.inventory = inventory), (this.status = status);
   }
 }
 //TODO the Player constructor is different, match the ones below to it to see if that fixes the problem.
 // A List of All Interactable Items
 class Commodity {
-  constructor({ name, altNames, interact, followUp }) {
-    this.name = name;
-    this.altNames = altNames;
-    this.interact = interact;
-    this.followUp = followUp;
+  constructor(name, altNames, interact, followUp) {
+    (this.name = name),
+      (this.altNames = altNames),
+      (this.interact = interact),
+      (this.followUp = followUp);
   }
 }
 
 // A List of All Interactable People
 class Person {
-  constructor({ name, altNames, inventory, interact, followUp, status }) {
-    this.altNames = altNames;
-    this.interact = interact;
-    this.inventory = inventory;
-    this.name = name;
-    this.followUp = followUp;
-    this.status = status;
+  constructor(name, altNames, inventory, interact, followUp, status) {
+    (this.altNames = altNames),
+      (this.interact = interact),
+      (this.inventory = inventory),
+      (this.name = name),
+      (this.followUp = followUp),
+      (this.status = status);
   }
 }
 
 //List of all the Locations in this Adventure, containing everything they have.
 class Room {
-  constructor({
+  constructor(
     name,
     altNames,
     doorLock,
     inventory,
     interact,
     possibleLocations,
-    description,
-  }) {
-    this.altNames = altNames;
-    this.description = description;
-    this.doorLock = doorLock;
-    this.interact = interact;
-    this.inventory = inventory;
-    this.name = name;
-    this.possibleLocations = possibleLocations;
+    description
+  ) {
+    (this.altNames = altNames),
+      (this.description = description),
+      (this.doorLock = doorLock),
+      (this.interact = interact),
+      (this.inventory = inventory),
+      (this.name = name),
+      (this.possibleLocations = possibleLocations);
   }
 }
 
@@ -124,10 +123,10 @@ let currentLocation = "Town Triangle"; // This updates as the player moves
 let heroName = "Taran"; // Default Name
 let userInput = ""; // Currently their is no input
 //Player Inventory
-let hero = 0;//new Player({});
+let hero = 0; //new Player({});
 // The following is a list of Objects that define our rooms.
-let townTriangle = 0;//new Room({});
-let idiotsInspiringInn = 0;//new Room({});
+let townTriangle = 0; //new Room({});
+let idiotsInspiringInn = 0; //new Room({});
 let upstairsRoom = new Room({});
 let forlornForestOfFatality = new Room({});
 let deepWoodsOfCertainDoom = new Room({});
@@ -137,7 +136,7 @@ let underworld = new Room({});
 // List of Interactable Persons (People b/c Grammar)
 let retiredAdventurer = new Person({});
 let simpleVillager = new Person({});
-let innkeeper = 0;//new Person({});
+let innkeeper = 0; //new Person({});
 let obnoxiousPatron = new Person({});
 let musicianWithABrokenArm = new Person({});
 let sleepingChild = new Person({});
@@ -1052,20 +1051,19 @@ function setDefaults() {
     "Healthy." // Status is Healthy
   );
   // The following is a list of Objects that define our rooms.
-  townTriangle = new Room({
-    name: "Town Triangle",
-    altNames: ["Town Triangle", "Town", "Triangle", "Tt"],
-    doorLock: false,
-    inventory: [],
-    interact: ["Retired Adventurer", "Simple Villager"],
-    possibleLocations: ["Idiot's Inspiring Inn", "Forlorn Forest Of Fatality"],
-    description:
-      "\nThe Town Triangle\nThe center of a rustic hamlet of Dorkington in the shape of a triangle.\nIt is usually a vibrant hub of activity, but most people are still asleep. \nThe only inhabitants, presently present, are the Simple Villager and the Retired Adventurer.\n\nFrom here you can go to the Idiot's Inspiring Inn\nor travel into the Forlorn Forest Of Fatality.\n",
-  });
+  townTriangle = new Room(
+    "Town Triangle",
+    ["Town Triangle", "Town", "Triangle", "Tt"],
+    false,
+    [],
+    ["Retired Adventurer", "Simple Villager"],
+    ["Idiot's Inspiring Inn", "Forlorn Forest Of Fatality"],
+    "\nThe Town Triangle\nThe center of a rustic hamlet of Dorkington in the shape of a triangle.\nIt is usually a vibrant hub of activity, but most people are still asleep. \nThe only inhabitants, presently present, are the Simple Villager and the Retired Adventurer.\n\nFrom here you can go to the Idiot's Inspiring Inn\nor travel into the Forlorn Forest Of Fatality.\n"
+  );
 
-  idiotsInspiringInn = new Room({
-    name: "Idiot's Inspiring Inn",
-    altNames: [
+  idiotsInspiringInn = new Room(
+    "Idiot's Inspiring Inn",
+    [
       "Idiot's Inspiring Inn",
       "Idiots Inspiring Inn",
       "Idiot",
@@ -1075,28 +1073,26 @@ function setDefaults() {
       "Inn",
       "Iii",
     ],
-    doorLock: false,
-    inventory: ["Bag Of Jewels"],
-    interact: ["Innkeeper", "Obnoxious Patron", "Musician With A Broken Arm"],
-    possibleLocations: ["Town Triangle", "Upstairs Room"],
-    description:
-      "\nThe Idiot's Inspiring Inn\nThe most popular tavern in Dorkington, \nprimarily because it is the only tavern in the entire village. \nThe Innkeeper behind the bar is preparing a meal for a Musician With A Broken Arm. \nIn the back of the room, an Obnoxious Patron is slovenly eating a meal.\nA Bag Of Jewels is scattered across the patron's table.\n\nFrom here you can head outside to the Town Triangle\nor go to the Upstairs Room.\n",
-  });
+    false,
+    ["Bag Of Jewels"],
+    ["Innkeeper", "Obnoxious Patron", "Musician With A Broken Arm"],
+    ["Town Triangle", "Upstairs Room"],
+    "\nThe Idiot's Inspiring Inn\nThe most popular tavern in Dorkington, \nprimarily because it is the only tavern in the entire village. \nThe Innkeeper behind the bar is preparing a meal for a Musician With A Broken Arm. \nIn the back of the room, an Obnoxious Patron is slovenly eating a meal.\nA Bag Of Jewels is scattered across the patron's table.\n\nFrom here you can head outside to the Town Triangle\nor go to the Upstairs Room.\n"
+  );
 
-  upstairsRoom = new Room({
-    name: "Upstairs Room",
-    altNames: ["Upstairs Room", "Upstairs", "Room", "Ur"],
-    doorLock: false,
-    inventory: [],
-    interact: ["Sleeping Child", "Exhausted Parents"],
-    possibleLocations: ["Idiot's Inspiring Inn"],
-    description:
-      "The Upstairs Room\nHeading up the stairs you come across\na pair of Exhausted Parents reading just outside of a room.\nInside the room, a Sleeping Child lays motionless on the bed.\n\nFrom here you can head back downstairs to the Idiot's Inspiring Inn.\n",
-  });
+  upstairsRoom = new Room(
+    "Upstairs Room",
+    ["Upstairs Room", "Upstairs", "Room", "Ur"],
+    false,
+    [],
+    ["Sleeping Child", "Exhausted Parents"],
+    ["Idiot's Inspiring Inn"],
+    "The Upstairs Room\nHeading up the stairs you come across\na pair of Exhausted Parents reading just outside of a room.\nInside the room, a Sleeping Child lays motionless on the bed.\n\nFrom here you can head back downstairs to the Idiot's Inspiring Inn.\n"
+  );
 
-  forlornForestOfFatality = new Room({
-    name: "Forlorn Forest Of Fatality",
-    altNames: [
+  forlornForestOfFatality = new Room(
+    "Forlorn Forest Of Fatality",
+    [
       "Forlorn Forest Of Fatality",
       "Forlorn Forest",
       "Forlorn",
@@ -1105,17 +1101,16 @@ function setDefaults() {
       "Ffof",
       "Fff",
     ],
-    doorLock: false,
-    inventory: ["Damaged Lute"],
-    interact: ["Crooked Sign"],
-    possibleLocations: ["Town Triangle", "Deep Woods Of Certain Doom"],
-    description:
-      "\nThe Forlorn Forest Of Fatality\nThe edge of the forest seems welcoming enough.\nAs you travel down the overgrown path\nyou see a Crooked Sign hanging on a weatherbeaten post.\n\nFrom here you can head back to safety in the Town Triangle\nor venture onward into the Deep Woods Of Certain Doom.\n",
-  });
+    false,
+    ["Damaged Lute"],
+    ["Crooked Sign"],
+    ["Town Triangle", "Deep Woods Of Certain Doom"],
+    "\nThe Forlorn Forest Of Fatality\nThe edge of the forest seems welcoming enough.\nAs you travel down the overgrown path\nyou see a Crooked Sign hanging on a weatherbeaten post.\n\nFrom here you can head back to safety in the Town Triangle\nor venture onward into the Deep Woods Of Certain Doom.\n"
+  );
 
-  deepWoodsOfCertainDoom = new Room({
-    name: "Deep Woods Of Certain Doom",
-    altNames: [
+  deepWoodsOfCertainDoom = new Room(
+    "Deep Woods Of Certain Doom",
+    [
       "Deep Woods Of Certain Doom",
       "Deep Woods",
       "Certain Doom",
@@ -1125,21 +1120,16 @@ function setDefaults() {
       "Doom",
       "Dwocd",
     ],
-    doorLock: true,
-    inventory: ["Pointless Rock"],
-    interact: [],
-    possibleLocations: [
-      "Forlorn Forest Of Fatality",
-      "Hag's Horrid Hovel",
-      "Dragon's Keep",
-    ],
-    description:
-      "\nThe Deep Woods Of Certain Doom\nAs soon as you step into the shadows of the trees,\nyou can feel the warmth pulled from your body,\nas if by an unnatural force.\nYou know that this is the point of no return.\nYou steel yourself as you continue to march onward.\n\nFrom here you can head back to the Forlorn Forest Of Fatality,\nfollow the path to the Hag's Horrid Hovel\nor trek towards the Dragon's Keep.\n",
-  });
+    true,
+    ["Pointless Rock"],
+    [],
+    ["Forlorn Forest Of Fatality", "Hag's Horrid Hovel", "Dragon's Keep"],
+    "\nThe Deep Woods Of Certain Doom\nAs soon as you step into the shadows of the trees,\nyou can feel the warmth pulled from your body,\nas if by an unnatural force.\nYou know that this is the point of no return.\nYou steel yourself as you continue to march onward.\n\nFrom here you can head back to the Forlorn Forest Of Fatality,\nfollow the path to the Hag's Horrid Hovel\nor trek towards the Dragon's Keep.\n"
+  );
 
-  hagsHorridHovel = new Room({
-    name: "Hag's Horrid Hovel",
-    altNames: [
+  hagsHorridHovel = new Room(
+    "Hag's Horrid Hovel",
+    [
       "Hag's Horrid Hovel",
       "Hags Horrid Hovel",
       "Hag's Hovel",
@@ -1150,13 +1140,12 @@ function setDefaults() {
       "Hovel",
       "Hhh",
     ],
-    doorLock: false,
-    inventory: [],
-    interact: ["Letterbox"],
-    possibleLocations: ["Deep Woods Of Certain Doom"],
-    description:
-      "\nThe Hag's Horrid Hovel\nA gnarled pile of sticks and mud twist together to form a makeshift shelter.\nOut of the braided husk of a dying tree sits a simple Letterbox.\n\nFrom here you can follow the path back to the Deep Woods Of Certain Doom.\n",
-  });
+    false,
+    [],
+    ["Letterbox"],
+    ["Deep Woods Of Certain Doom"],
+          "\nThe Hag's Horrid Hovel\nA gnarled pile of sticks and mud twist together to form a makeshift shelter.\nOut of the braided husk of a dying tree sits a simple Letterbox.\n\nFrom here you can follow the path back to the Deep Woods Of Certain Doom.\n",
+  );
 
   dragonsKeep = new Room({
     name: "Dragon's Keep",
