@@ -1147,28 +1147,27 @@ function setDefaults() {
           "\nThe Hag's Horrid Hovel\nA gnarled pile of sticks and mud twist together to form a makeshift shelter.\nOut of the braided husk of a dying tree sits a simple Letterbox.\n\nFrom here you can follow the path back to the Deep Woods Of Certain Doom.\n",
   );
 
-  dragonsKeep = new Room({
-    name: "Dragon's Keep",
-    altNames: ["Dragon's Keep", "Dragons Keep", "Keep", "Dk"],
-    doorLock: false,
-    inventory: [],
-    interact: ["Dragon", "Mounds Of Gold", "Heaps Of Silver", "Pile Of Bones"],
-    possibleLocations: ["Deep Woods Of Certain Doom"],
-    description:
-      "\nDragon's Keep\nThe air smells of ash, as you approach a dark cave.\nYou can see the light being reflected off of shimmering Mounds Of Gold and Heaps Of Silver.\nIn the back of the cave you spot a large red Dragon, sleeping upon a massive Pile Of Bones.\n\nFrom here you can run away and end up in the Deep Woods Of Certain Doom.\n",
-  });
+  dragonsKeep = new Room(
+    "Dragon's Keep",
+    ["Dragon's Keep", "Dragons Keep", "Keep", "Dk"],
+    false,
+    [],
+    ["Dragon", "Mounds Of Gold", "Heaps Of Silver", "Pile Of Bones"],
+    ["Deep Woods Of Certain Doom"],
+          "\nDragon's Keep\nThe air smells of ash, as you approach a dark cave.\nYou can see the light being reflected off of shimmering Mounds Of Gold and Heaps Of Silver.\nIn the back of the cave you spot a large red Dragon, sleeping upon a massive Pile Of Bones.\n\nFrom here you can run away and end up in the Deep Woods Of Certain Doom.\n",
+  );
 
-  underworld = new Room({
-    name: "Underworld",
-    altNames: ["Underworld", "U"],
-    doorLock: "No Escape",
-    inventory: [],
-    interact: ["Grim Reaper"],
-    possibleLocations: [
+  underworld = new Room(
+    "Underworld",
+    ["Underworld", "U"],
+    "No Escape",
+    [],
+    ["Grim Reaper"],
+    [
       `... \nFunny there are no exits...\nThere is nowhere to go,\nthere is no escape.`,
     ],
-    description: `-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X\n\nYou could feel your consciousness leave your body.\nThen suddenly without warning you were here.\nYou know without a shadow of a doubt that you are in the Underworld.\n\nInside a dark cavern.  The only source of light...\nA flickering torch held by a robed figure,\nwhom you instinctually know is the personification of Death, the Grim Reaper.\n`,
-  });
+    `-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X\n\nYou could feel your consciousness leave your body.\nThen suddenly without warning you were here.\nYou know without a shadow of a doubt that you are in the Underworld.\n\nInside a dark cavern.  The only source of light...\nA flickering torch held by a robed figure,\nwhom you instinctually know is the personification of Death, the Grim Reaper.\n`,
+  );
 
   // List of Interactable Persons (People b/c Grammar)
   // Complicated Person, see "retiredAdventurerInteraction" function
