@@ -74,7 +74,7 @@ class Player {
     this.status = status;
   }
 }
-//TODO the Player constructor is different, match the ones below to it to see if that fixes the problem.
+
 // A List of All Interactable Items
 class Commodity {
   constructor({ name, altNames, interact, followUp }) {
