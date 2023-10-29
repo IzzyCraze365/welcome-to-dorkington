@@ -1040,6 +1040,7 @@ function tryAgain() {
 ╚═╝░░╚═╝░╚═════╝░╚═╝░░╚═╝╚═╝╚═╝░░╚══╝\n\n\n\n\n`);
 }
 
+//TODO I need to find a way to properly deep clone objects, or set it so a function can be added afterwards
 function setDefaults() {
   secretNameSelector(); // Changes the Password
   currentLocation = "Town Triangle"; // Start back at Square 1
