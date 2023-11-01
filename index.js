@@ -1,5 +1,6 @@
 // Welcome to Dorkington - A Text Based Adventure
 // Version 4.6 //! IN PROGRESS
+//TODO It may be time to add lodash
 // John Isabella III
 
 const readline = require("readline");
