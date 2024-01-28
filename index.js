@@ -1,5 +1,5 @@
 // Welcome to Dorkington - A Text Based Adventure
-// Version 5.0 //! IN PROGRESS
+// Version 5.0 //! IN PROGRESS get frontend up
 //TODO It may be time to add lodash
 // John Isabella III
 
