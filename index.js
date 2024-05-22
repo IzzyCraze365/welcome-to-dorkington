@@ -1215,7 +1215,7 @@ function setDefaults() {//This will need to be cloned.
         locations[currentLocation].inventory,
         "Warm Meal"
       );
-      console.log("TESTING TESTING");
+      /* console.log("TESTING TESTING"); */
       innkeeper.interact = `Innkeeper\n    "Welcome to the Idiot's Inspring Inn where our hospitality is as warm as our food.\n     Good to see you again, ${heroName}!\n     Feel free to talk to anybody round these parts.\n     We're the friendly sort of folk,\n     and we all have some nuggets of useful information.`;
     },
     status: "Normal",
